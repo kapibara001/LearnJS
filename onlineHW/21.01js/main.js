@@ -84,6 +84,76 @@
 }*/
 
 //6 
+/*{
+    let sum = parseFloat(prompt("Введите количество USD для перевода"));
+    
+    let EUR = sum*1.04;
+    let UAN = sum*7.31;
+    let AZN = sum*1.7;
+
+    let convert_to = +prompt(`Введите, в какую валюту вы хотите перевести $${sum}:\n1) EUR\n2) UAN\n3) AZN`);
+
+    switch(convert_to){ 
+        case 1:
+            document.write(`$${sum} в EUR: ${EUR}`);
+            break;
+        case 2:
+            document.write(`$${sum} в UAN: ${UAN}`);
+            break;
+        case 3:
+            document.write(`$${sum} в AZN: ${AZN}`);
+            break;
+    }
+}*/
+
+//7
+/*{
+    let sum = +prompt("Сумма покупки");
+
+    if (sum >= 200 && sum < 300) 
+        document.write(`Сумма оплаты с учетом скидки: ${sum*0.97}`);
+    else if (sum >= 300 && sum < 500) 
+        document.write(`Сумма оплаты с учетом скидки: ${sum*0.95}`);
+    else if (sum >= 500)
+        document.write(`Сумма оплаты с учетом скидки: ${sum*0.93}`);
+}*/
+
+//8 
+/*{
+    let ocr = +prompt("Введите длину окружности");
+    let storona = +prompt("Введите длину стороны квадрата");
+
+    let diametr = ocr / Math.PI;
+
+    if (diametr < storona)
+        document.write(`Окружность войдет в квадрат, так как диаметр равен ${diametr}, а сторона квадрата больше него и равна ${storona}`);
+    else 
+        document.write(`Окружнсть не войдет, так как диаметр равен ${diametr}, а сторона квадрата меньше него и равна ${storona}`);
+}*/
+
+//9 
+/*{
+    let question1 = +prompt("Вопрос 1: Сколько ног у паука?\n1) 10\n2) 8\n3) 6")
+    let question2 = +prompt("Вопрос 2: Является ли Плутон планетой в современной науке?\n1) Да\n2) Нет");
+    let question3 = +prompt("Вопрос 3: Сколько клеток в орагнизме человека?\n1) 10^8\n2) 10^12\n3) 10^15");
+
+    let result = 0;
+    if (question1 == 2)
+        result += 2;
+    if (question2 == 2)
+        result += 2 
+    if (question3 == 3)
+        result += 2
+
+    if (result == 0) 
+        document.write("0 очков. Передлайте");
+    else if (result >= 2 && result < 6)
+        document.write(`Результат удовлетворительный - ${result}`);
+    else 
+        document.write(`Результат замечательный - ${result}! Продолжайте в том же духе!`);
+}*/
+
+//10
 {
     
 }
