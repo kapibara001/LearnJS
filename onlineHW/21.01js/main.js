@@ -50,6 +50,40 @@
 }*/
 
 //3
+/*{
+    let num = prompt("Введите 3х значное число");
+    if (num[0] == num[1] || num[0] == num[2]) {
+        document.write(`Общая цифра в числе ${num}: ${num[0]}`);
+    }
+    else if (num[1] == num[2]) {
+        document.write(`Общая цифра в числе ${num}: ${num[1]}`);
+    }
+    else {
+        document.write(`Нет общих цифр в числе ${num}`);
+    }
+}*/
+
+//4
+/*{
+    let year = +prompt("Введите год");
+    if ( (year % 400 == 0) || (year % 4 == 0 && year % 100 !=0) ) 
+        document.write("Год високосный");
+    else {
+        document.write("Год невисокосный");
+    }
+}*/
+
+//5
+/*{
+    let num = prompt("Введите 5-значное число"); 
+    //alert(num.slice(0,2)); alert(num.slice(-2));
+    if ((num[1]+num[0]) == (num.slice(-2)))
+        document.write("Палиндром");
+    else 
+        document.write("Не палиндром");
+}*/
+
+//6 
 {
     
 }
