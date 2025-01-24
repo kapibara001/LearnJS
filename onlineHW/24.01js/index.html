@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>  
+    <p style="font-size: 20px; margin: 10px 0;"><b>Задание 1</b></p>
+    <script>
+        document.write("");
+        for (let i = 1; i <= 100; i++) {
+            if (i%7 == 0) {
+                document.write(`Число, кратное 7: ${i}<br>`);
+            }
+        }
+        document.write("<br>");
+    </script>
+
+    <p style="font-size: 20px; margin: 10px 0;"><b>Задание 2 (В задании написано выводить в консоль)</b></p>
+    <!-- <script>
+        let maxnum1 = +prompt(`До какого числа вы хотите выводить квадраты чисел?`);
+        for (let i = 1; i <= maxnum; i++) {
+            console.log(`${i}^2 == ${i**2}`);
+        }
+    </script> -->
+
+    <p style="font-size: 20px; margin: 10px 0;"><b>Задание 3 (В консоль)</b></p>
+    <!-- <script>
+        let maxnum2 = +prompt(`Максимальное число?`);
+        for (let i = maxnum; i >= 1; i--) {
+            console.log(`${i}^2 = ${i**2}`);
+        }
+    </script> -->
+
+    <p style="font-size: 20px; margin: 10px 0;"><b>Задание 4</b></p>
+    <!-- <script>
+        let num1 = +prompt("Первое число");
+        let num2 = +prompt("Второе число");
+
+        let isFind = false;
+        for (let i = 2; i <= Math.min(num1, num2); i++) {
+            if ((num1 % i == 0) && (num2 % i == 0)) {
+                document.write(`Наименьшее общее кратное чисел ${num1} и ${num2}: ${i}`);
+                isFind = true;
+                break;
+            } 
+        }
+        (isFind == false) ? document.write("Кроме 1 нет общих кратных.") : "";
+    </script> -->
+
+    <p style="font-size: 20px; margin: 10px 0;"><b>Задание 5</b></p>
+    <!-- <script>
+        let neednum = +prompt("Верхняя граница чисел фибаначи?");
+
+        let a = 0; b = 1;   
+        let next = 0;
+        document.write("Последоавтельность фибаначи: ")
+        for (let i = 0; i <= neednum; i++) {
+            if (next < neednum) {
+                next = a+b;
+                a = b;
+                b = next;
+                document.write(a + " ");
+            }
+        }
+    </script> -->
+
+    <p style="font-size: 20px; margin: 10px 0;"><b>Задание 6</b></p>
+    <script>
+        let maxmax = +prompt("МАксимальное число для проверки на палендром?");
+        for (let i = 100; i <= maxmax; i++) {
+            newi = i.toString();
+            let half_newi = newi.length / 2;
+            if (newi.slice(0, half_newi) == reverse(newi.slice(half_newi))) {
+                document.write(`${newi} - палиндром`);
+            }
+        }
+
+        function reverse(word) {
+            return word.split("").reverse().join("");
+        }
+    </script>
+</body>
+</html>
