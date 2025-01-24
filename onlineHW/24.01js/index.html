@@ -128,17 +128,18 @@
         let step = +prompt("С каком шагом генерировать числа?");
 
         document.write(`Числа, начиная с ${start} и заканчивая ${end} с шагом ${step}: `);
-        if (start > end) {
+        // if (start > end) {
             for (let i = start; i <= end; i += step) {
                 document.write(i + " ");
             }
-        } else if (start < end) {
-            for (let i = start; i >= end; i -= step) {
-                document.write(i + " ");
-            } 
-        } else {
-            document.write("Числа равны и между ними нет других чисел.")
-        }
+        
+        // } else if (start < end) {
+        //     for (let i = start; i >= end; i -= step) {
+        //         document.write(i + " ");
+        //     } 
+        // } else {
+        //     document.write("Числа равны и между ними нет других чисел.")
+        // }
     </script>
 
 
