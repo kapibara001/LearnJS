@@ -137,7 +137,7 @@
     let question2 = +prompt("Вопрос 2: Является ли Плутон планетой в современной науке?\n1) Да\n2) Нет");
     let question3 = +prompt("Вопрос 3: Сколько клеток в орагнизме человека?\n1) 10^8\n2) 10^12\n3) 10^15");
 
-    let result = 0;
+    let result = 0; 
     if (question1 == 2)
         result += 2;
     if (question2 == 2)
