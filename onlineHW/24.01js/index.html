@@ -8,7 +8,6 @@
 <body>  
     <p style="font-size: 20px; margin: 10px 0;"><b>Задание 1</b></p>
     <script>
-        document.write("");
         for (let i = 1; i <= 100; i++) {
             if (i%7 == 0) {
                 document.write(`Число, кратное 7: ${i}<br>`);
@@ -18,23 +17,25 @@
     </script>
 
     <p style="font-size: 20px; margin: 10px 0;"><b>Задание 2 (В задании написано выводить в консоль)</b></p>
-    <!-- <script>
+    <script>
         let maxnum1 = +prompt(`До какого числа вы хотите выводить квадраты чисел?`);
-        for (let i = 1; i <= maxnum; i++) {
-            console.log(`${i}^2 == ${i**2}`);
+        for (let i = 1; i <= maxnum1; i++) {
+            document.write(`${i}^2 = ${i**2}<br>`);
         }
-    </script> -->
+    </script>
+    <br>
 
     <p style="font-size: 20px; margin: 10px 0;"><b>Задание 3 (В консоль)</b></p>
-    <!-- <script>
+    <script>
         let maxnum2 = +prompt(`Максимальное число?`);
-        for (let i = maxnum; i >= 1; i--) {
-            console.log(`${i}^2 = ${i**2}`);
+        for (let i = maxnum2; i >= 1; i--) {
+            document.write(`${i}^2 = ${i**2}<br>`);
         }
-    </script> -->
+    </script>
+    <br>
 
     <p style="font-size: 20px; margin: 10px 0;"><b>Задание 4</b></p>
-    <!-- <script>
+    <script>
         let num1 = +prompt("Первое число");
         let num2 = +prompt("Второе число");
 
@@ -47,10 +48,10 @@
             } 
         }
         (isFind == false) ? document.write("Кроме 1 нет общих кратных.") : "";
-    </script> -->
+    </script>
 
     <p style="font-size: 20px; margin: 10px 0;"><b>Задание 5</b></p>
-    <!-- <script>
+    <script>
         let neednum = +prompt("Верхняя граница чисел фибаначи?");
 
         let a = 0; b = 1;   
@@ -64,11 +65,11 @@
                 document.write(a + " ");
             }
         }
-    </script> -->
+    </script>
 
     <p style="font-size: 20px; margin: 10px 0;"><b>Задание 6</b></p>
-    <!-- <script>
-        let maxmax = +prompt("МАксимальное число для проверки на палендром?");
+    <script>
+        let maxmax = +prompt("Максимальное число для проверки на палендром?");
         for (let i = 100; i <= maxmax; i++) {
             newi = i.toString();
             let half_newi = newi.length / 2;
@@ -80,10 +81,10 @@
         function reverse(word) {
             return word.split("").reverse().join("");
         }
-    </script> -->
+    </script>
 
     <p style="font-size: 20px; margin: 10px 0;"><b>Задание 7</b></p>
-    <!-- <script>
+    <script>
         let number = +prompt("Для какого числа будем определять все числители кроме 1 и самого числа?");
         let allDel = new Array;
         // for (let i = 2; i < Math.sqrt(number)+1; i++) {
@@ -101,10 +102,10 @@
                 document.write(allDel[i] + " ");
             }
         }
-    </script> -->
+    </script>
 
     <p style="font-size: 20px; margin: 10px 0;"><b>Задание 8</b></p>
-    <!-- <script>
+    <script>
         let numberNOD1 = +prompt("Число 1"); 
         let numberNOD2 = +prompt("Число 1");
 
@@ -119,7 +120,7 @@
         } else {
             document.write(`У чисел ${numberNOD1} и ${numberNOD2} наибольший общий делитель: ${alldelmax[alldelmax.length-1]}`);
         }
-    </script> -->
+    </script>
 
     <p style="font-size: 20px; margin: 10px 0;"><b>Задание 9</b></p>
     <script>
@@ -128,20 +129,39 @@
         let step = +prompt("С каком шагом генерировать числа?");
 
         document.write(`Числа, начиная с ${start} и заканчивая ${end} с шагом ${step}: `);
-        // if (start > end) {
-            for (let i = start; i <= end; i += step) {
+        if (start < end) {
+           for (let i = start; i <= end; i += step) {
+               document.write(i + " ");
+           }
+        } else if (start > end) {
+            for (let i = start; i >= end; i -= step) {
                 document.write(i + " ");
-            }
-        
-        // } else if (start < end) {
-        //     for (let i = start; i >= end; i -= step) {
-        //         document.write(i + " ");
-        //     } 
-        // } else {
-        //     document.write("Числа равны и между ними нет других чисел.")
-        // }
+            } 
+        } else {
+            document.write("Числа равны и между ними нет других чисел.")
+        }
     </script>
 
+    <p style="font-size: 20px; margin: 10px 0;"><b>Задание 10</b></p>
+    <script>
+        let mynum = +prompt("Ваше число");
 
+        let sumDel = new Array();
+        for (let i = 1; i <= mynum/2 + 1; i++) {
+            if (mynum % i == 0) {
+                sumDel.push(i);
+            }
+        }
+
+        let sum = 0;
+        for (let i = 0; i <= sumDel.length-1; i++) {
+            sum+=sumDel[i];
+        }
+        
+        (mynum == sum) ? 
+        document.write(`Совершенное число.\nЧисло ${mynum} является совершенным, так как сумма его делителей, помимо числа, равна ${sum}`) 
+        : 
+        document.write(`Несовершенное число.\nЧисло ${mynum} НЕ является совершенным, так как сумма его делителей, помимо числа, равна ${sum}`);
+    </script>
 </body>
 </html> 
