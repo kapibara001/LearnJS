@@ -67,7 +67,7 @@
     </script> -->
 
     <p style="font-size: 20px; margin: 10px 0;"><b>Задание 6</b></p>
-    <script>
+    <!-- <script>
         let maxmax = +prompt("МАксимальное число для проверки на палендром?");
         for (let i = 100; i <= maxmax; i++) {
             newi = i.toString();
@@ -80,6 +80,67 @@
         function reverse(word) {
             return word.split("").reverse().join("");
         }
+    </script> -->
+
+    <p style="font-size: 20px; margin: 10px 0;"><b>Задание 7</b></p>
+    <!-- <script>
+        let number = +prompt("Для какого числа будем определять все числители кроме 1 и самого числа?");
+        let allDel = new Array;
+        // for (let i = 2; i < Math.sqrt(number)+1; i++) {
+        for (let i = 2; i <= number; i++) {
+            if ((number % i == 0) && (i != 1) && (i != number)) {
+                allDel.push(i);
+            }
+        }
+
+        if (allDel.length == 0) {
+            document.write(`Число ${number} - простое (делители только 1 и само число ${number})`);
+        } else {
+            document.write(`Делители числа ${number}: `);
+            for (let i = 0; i < allDel.length; i++) {
+                document.write(allDel[i] + " ");
+            }
+        }
+    </script> -->
+
+    <p style="font-size: 20px; margin: 10px 0;"><b>Задание 8</b></p>
+    <!-- <script>
+        let numberNOD1 = +prompt("Число 1"); 
+        let numberNOD2 = +prompt("Число 1");
+
+        let alldelmax = new Array;
+        for (let i=1; i <= Math.min(numberNOD1, numberNOD2); i++) {
+            if ((numberNOD1 % i == 0) && (numberNOD2 % i == 0)) {
+                alldelmax.push(i);
+            }
+        }
+        if (alldelmax.length == 0) {
+            document.write(`У чисел ${numberNOD1} и ${numberNOD2} нет общих делителей, кроме 1`);
+        } else {
+            document.write(`У чисел ${numberNOD1} и ${numberNOD2} наибольший общий делитель: ${alldelmax[alldelmax.length-1]}`);
+        }
+    </script> -->
+
+    <p style="font-size: 20px; margin: 10px 0;"><b>Задание 9</b></p>
+    <script>
+        let start = +prompt("С какого числа начинать?");
+        let end = +prompt("Каким числом закончим?");
+        let step = +prompt("С каком шагом генерировать числа?");
+
+        document.write(`Числа, начиная с ${start} и заканчивая ${end} с шагом ${step}: `);
+        if (start > end) {
+            for (let i = start; i <= end; i += step) {
+                document.write(i + " ");
+            }
+        } else if (start < end) {
+            for (let i = start; i >= end; i -= step) {
+                document.write(i + " ");
+            } 
+        } else {
+            document.write("Числа равны и между ними нет других чисел.")
+        }
     </script>
+
+
 </body>
-</html>
+</html> 
