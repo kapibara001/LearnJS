@@ -36,4 +36,9 @@ const admin = {
     //     return `name: ${this.name}`
     // }
 }
-document.write(admin.toString5());
+document.write(admin.toString5() + "<br>");
+
+
+//      Даты
+let now = new Date();
+document.write(now);
