@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        {
+            let num1 = [1, 2, 3, 4, 5];
+            let num2 = [6, 7, 8, 9];
+
+            let num12 = num1 + num2;
+            document.write("1) " + num12 + "<br>")
+        }
+    </script>
+
+    <script>
+            {
+                let num1 = [1, 6, 2, 5, 2];
+                let num2 = [1, 7, 2, 6, 8, 5];
+
+                let n12 = new Array();
+                if (num1.length >= num2.length) {
+                    for (let i = 0; i < num1.length; i++) {
+                        if (num2.includes(num1[i])) {
+                            n12.push(num1[i]);
+                        }
+                    }
+                }
+                if (num2.length > num1.length) {
+                    for (let i = 0; i < num2.length; i++) {
+                        if (num1.includes(num2[i])) {
+                            n12.push(num2[i]);
+                        }
+                    }
+                }
+
+                let uniq = new Array();
+                n12.forEach(element => {
+                    if (!uniq.includes(element)) {
+                        uniq.push(element);
+                    }
+                });
+
+                document.write(`2) Общие знчения списков {${num1}} и {${num2}}: ` + uniq + "<br>")
+            }
+    </script>
+
+    <script>
+        {
+            let num1 = [1, 2, 3, 5, 8];
+            let num2 = [1, 6, 2, 6, 9, 10, 3];
+
+            let uniq = new Array();
+            for (let i = 0; i < Math.min(num1.length, num2.length); i++) {
+                if (!num2.includes(num1[i]))
+                    uniq.push(num1[i]); 
+            }
+
+            document.write(`3) Уникальные элементы первого массива: ${uniq} <br>`);
+        }
+    </script>
+
+    <script>
+        {
+            let num1 = [1, 5, 2, 5, 3, 8];
+            let num2 = [1, 6, 2, 6, 7, 2, 60, 1];
+
+            let uniq = new Array();
+            for (let i = 0; i < num1.length; i++) {
+                if (!num2.includes(num1[i])) 
+                    uniq.push(num1[i]);
+            }
+
+            for (let i = 0; i < num2.length; i++) {
+                if (!num1.includes(num2[i])) 
+                    uniq.push(num2[i]);
+            }
+
+            document.write(`4) Значения, уникальные в каждом списке {${num1}} и {${num2}}: ${uniq} <br>`);
+        }
+    </script>
+
+    <script>
+        let num1 = new Array();
+        let num2 = new Array();
+
+        for (let i = 0; i < 10; i++) {
+            num1.push(Math.floor(Math.random()*10));
+            num2.push(Math.floor(Math.random()*10));
+        }
+
+        let genrealList = num1.sort((a,b) =>b-a) + "," + num2.sort((a,b) => b-a);
+
+        document.write(`5) Объекдинение отсортированных списков {${num1}} и {${num2}}: ${genrealList}<br>`);
+    </script>
+
+    <script>
+        {
+            let num1 = [1, 2, 5, 2, 3, 8, 9];
+            let num2 = [96, 2, 5, 1, 7, 10, 12];
+
+            num1 = num1.sort((a,b) => b-a);
+            num2 = num2.sort((a,b) => b-a);
+
+            document.write(`6) Медианы двух отсортированных списков {${num1}} и {${num2}}: ${num1.slice(num1.length/2, (num1.length/2)+1)}, ${num2.slice(num2.length/2, (num2.length/2)+1)}<br>`);
+        }
+    </script>
+
+    <script>
+        function kMinElement(arr1, arr2, k) {
+            // arr1 = arr1.sort((a,b) => b-a);
+            // arr2 = arr2.sort((a,b) => b-a);
+
+            let arr3 = arr1.concat(arr2);
+            arr3 = arr3.sort((a,b) => a-b);
+
+            let outputArr = [];
+            for (let i = 0; i < arr3.length; i++) {
+                if (!outputArr.includes(arr3[i]))
+                    outputArr.push(arr3[i]);
+            }
+            
+            document.write(`7) ${k}-минимальный элемент в отсортированном списке {${outputArr}}: ${outputArr[k-1]}<br>`);
+        }
+        
+        let nums1 = [1, 2, 5, 2, 3, 8, 9];
+        let nums2 = [96, 2, 5, 1, 7, 10, 12];
+
+        kMinElement(nums1, nums2, 2);
+    </script>
+
+    <script>
+        {
+            function findCommod(...arrays) {
+                if (arrays.length === 0) return "Нет общих элементов или не поданы на вход функции массивы";
+
+                return arrays.reduce((res, arr) => res.filter(num => arr.includes(num)));
+            }
+
+            let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9,];
+            let arr2 = [2, 6, 1, 7, 3, 6,];
+            let arr3 = [1, 7, 2, 5, 8, 9, 2, 3,];
+
+            document.write(`8) Общие элементы в 3-х массивах {${arr1}}, {${arr2}}, {${arr3}}: ${findCommod(arr1, arr2, arr3)}<br>`);
+        }
+    </script>
+
+    <script>
+        {
+            function sameNumbers(...arrays) {
+                if (arrays.length === 1 || arrays.length === 0) return "Задан всего 1 массив, либо не заданы массивы вообще."
+
+                return arrays.reduce((res, arr) => res.filter(num => !arr.includes(num)))
+            }
+
+            let first = [1, 2, 3, 5, 6, 7];
+            let second = [1, 6, 2, 9];
+
+            document.write(`9) Уникальные значения первого массива {${first} и {${second}}: ${sameNumbers(first, second)}`);
+        }
+    </script>
+</body>
+</html>

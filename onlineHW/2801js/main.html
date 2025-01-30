@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let nums = [1, 16, 133, 251, 9123, 15, 3];
+
+        let sum = 0;
+        for (let i = 0; i<=nums.length; i++) {
+            if (nums[i] % 10 == 3)
+                sum += nums[i];
+        }
+        document.write("1) " + sum + "<br>");
+    </script>
+
+    <script>
+        {
+            let nums = [1, -2, 12, 5, -31, 15, -4, -1];
+
+            let maxMinusNum = Number.MIN_SAFE_INTEGER;
+            for (let i = 0; i <= nums.length; i++) {
+                if (nums[i] < 0 && maxMinusNum  < nums[i]) {
+                    maxMinusNum = nums[i];
+                }
+            }
+            document.write("2) " + maxMinusNum + "<br>");
+        }
+    </script>
+
+    <script>
+        {
+            let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            let sum = 0;
+            for (let i = 0; i < nums.length; i++) {
+                sum += nums[i];
+            }
+            let averge = sum/nums.length;
+
+            document.write("3) " + averge + "<br>");
+        }
+    </script>
+
+    <script>
+        {
+            let listQantity = +prompt(`Введите количество элементов в списке`);
+            let ourNumArray = [];
+
+            for (let i = 0; i < listQantity; i++) {
+                ourNumArray.push(Math.floor(Math.random()*10));
+            }
+            // document.write("4) " + ourNumArray + "<br>")
+
+            let uniqNums = new Array();
+            for (let i = 0; i < listQantity; i++) {
+                if (!uniqNums.includes(ourNumArray[i])) {
+                    uniqNums.push(ourNumArray[i]);
+                }
+            }
+
+            document.write("4) " + uniqNums + "<br>")
+        }
+    </script>
+</body>
+</html>
