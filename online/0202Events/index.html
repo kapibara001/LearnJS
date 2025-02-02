@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scr.js" defer></script>
+    <title>Events</title>
+    <style>
+        #modal-buy-oberlay {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+
+            background-color: rgba(0, 0, 0, 0.3);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #modal-buy-content {
+            width: 500px;
+            height: 600px;
+            background-color: rgb(255, 255, 255);
+
+            box-shadow: 0 0 10px black;
+            border-radius: 40px;
+
+            padding: 15px;
+            box-sizing: border-box;
+
+            overflow: auto;
+        }
+        .hiden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <button id="open-model-buy">Купить</button>
+    <div id="modal-buy-overlay" class="hiden">
+        <div id="modal-buy-content">
+            <button id="close-modal-buy">X</button>
+            <h1>Подтвердите покупку</h1>
+        </div>
+    </div>
+</body>
+</html>
