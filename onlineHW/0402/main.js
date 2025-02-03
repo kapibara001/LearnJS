@@ -47,8 +47,8 @@
         sum = 1;
         for (let i = 0; i < arr.length; i++) sum += arr[i];
 
-        if (sum == digital) return {res: true, print: `${digital} - Совершенное число`};
-        else return {res: false, print: `${digital} - Неовершенное число`};
+        if (sum == digital) return { res: true, print: `${digital} - Совершенное число` };
+        else return { res: false, print: `${digital} - Неовершенное число` };
     }
     // document.write(createDigitalArray(28).print);
     // document.write(createDigitalArray(29).print);
