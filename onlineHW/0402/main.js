@@ -75,9 +75,48 @@
             } else return "Неправильно задано время(с минусом)";
         } else {
             if (h >= 0 && m >= 0 && s >= 0) {
-                
+                return `${h.toString()}:${m.toString()}:${s.toString()}`;
             } else return "Неправильно задано время(с минусом)";
         }
     }
-    document.write(printTime(50, -50));
+    // document.write(printTime(50, 50, 12));
+
+    // Можно было и в случае, когда не указываем секунды, просто поставить перменную s и установить ей значение по умолчанию 0 и можно было бы обойтись
+    // без блока else в 76 строке
+}
+
+{   // 8, 9, 10
+    function timeDifferents(h1, m1, s1, h2, m2, s2) {
+        let secs1 = convertToSeconds(h1, m1, s1);
+        let secs2 = convertToSeconds(h2, m2, s2);
+
+        let partResult = Math.max(secs1, secs2) - Math.min(secs1, secs2);
+
+        return {
+            res: `${converToAllTimes(partResult).hour}:${converToAllTimes(partResult).minute}:${converToAllTimes(partResult).second}`,
+            h1: h1,
+            m1: m1, 
+            s1: s1,
+            h2: h2, 
+            m2: m2,
+            s2: s2,
+        }
+    }
+
+    function convertToSeconds(h, m, s) {
+        return h*3600+m*60+s;
+    }
+    // document.write(convertToSeconds(1, 1, 1));
+
+    function converToAllTimes(seconds) {
+       return {
+        hour: Math.floor(seconds/3600),
+        minute: Math.floor((seconds%3600)/60),
+        second: Math.floor(seconds%60),
+       }
+    }
+    
+    document.write(`Разница между ${timeDifferents(16, 15, 50, 20, 20, 10).h1}:${timeDifferents(16, 15, 50, 20, 20, 10).m1}:${timeDifferents(16, 15, 50, 20, 20, 10).h1} и 
+    ${timeDifferents(16, 15, 50, 20, 20, 10).h2}:${timeDifferents(16, 15, 50, 20, 20, 10).m2}:${timeDifferents(16, 15, 50, 20, 20, 10).h2} - 
+    ${timeDifferents(16, 15, 50, 20, 20, 10).res}`);
 }
