@@ -46,10 +46,38 @@
         
         sum = 1;
         for (let i = 0; i < arr.length; i++) sum += arr[i];
-
+        
         if (sum == digital) return { res: true, print: `${digital} - Совершенное число` };
         else return { res: false, print: `${digital} - Неовершенное число` };
     }
     // document.write(createDigitalArray(28).print);
     // document.write(createDigitalArray(29).print);
+
+    function interval(a, b) {
+        let arr = new Array();
+        for (let i = a; i <= b; i++) {
+            if (createDigitalArray(i).res) arr.push(i);
+        }
+        return arr;
+    }
+    // document.write(interval(5, 30));
+}
+
+{   // 7
+    function printTime(h, m, s) {
+        if (!s) {
+            if (h >= 0 && m >= 0) {
+                if (h < 10 || m < 10) {
+                    if (h < 10 && m > 10) return `0${h.toString()}:${m.toString()}:00`
+                    else if(h > 10 && m < 10) return `${h.toString()}:0${m.toString()}:00`
+                    else return `0${h.toString()}:0${m.toString()}:00`
+                } else return `${h.toString()}:${m.toString()}:00`
+            } else return "Неправильно задано время(с минусом)";
+        } else {
+            if (h >= 0 && m >= 0 && s >= 0) {
+                
+            } else return "Неправильно задано время(с минусом)";
+        }
+    }
+    document.write(printTime(50, -50));
 }
