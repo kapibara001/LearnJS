@@ -152,19 +152,19 @@
         year: 2024,
         "Averge speed": 90,
     }
-    document.write(allInfoCar(Mercedes, 450).info + allInfoCar(Mercedes, 450).timeForDistanse + " часов на преодоление " + allInfoCar(Mercedes, 450).distance + " километров")
+    // document.write(allInfoCar(Mercedes, 450).info + allInfoCar(Mercedes, 450).timeForDistanse + " часов на преодоление " + allInfoCar(Mercedes, 450).distance + " километров")
 }
 
 { // Задание 2
-    function del(a, b) {
-        for (let i = 1; i < Math.min(a, b); i++) {
-            if (a % i == 0 && b % i == 0) {
-                a /= i;
-                b /= i;
-            }
-        }
-        return { a, b }
-    }
+    // function del(a, b) {
+    //     for (let i = 1; i < Math.min(a, b); i++) {
+    //         if (a % i == 0 && b % i == 0) {
+    //             a /= i;
+    //             b /= i;
+    //         }
+    //     }
+    //     return { a, b }
+    // }
 
     let chislitel = +prompt("Введите числитель");
     let znamenatel = +prompt("Введите Знаментель");
@@ -178,5 +178,59 @@
         delenie: () => {return chislitel/znamenatel},
     }
 
-    document.write("<br>" + MathObject.plus() + " " + MathObject.minus() + " " + MathObject.mnoj() + " " + MathObject.delenie());
+    // document.write("<br>" + MathObject.plus() + " " + MathObject.minus() + " " + MathObject.mnoj() + " " + MathObject.delenie());
+}
+
+// Задание 3
+{
+    function isMin10(time) {
+        return (time<10) ? `0${time}` : time;
+    }
+
+    let timeH = 16;
+    let timeM = 3;
+    let timeS = 25;
+    let workWithTime = {
+        printTime: () => { return `${isMin10(timeH)}:${isMin10(timeM)}:${isMin10(timeS)}` },
+        upSeconds: (sec) => {
+            if ((timeS + sec) >= 60) {
+                let allTimeSec = timeH*3600 + timeM*60 + timeS;
+                allTimeSec += sec;
+
+                timeH = Math.floor(allTimeSec/3600);
+                timeM = Math.floor((allTimeSec%3600)/60);
+                timeS = Math.floor(allTimeSec%60);
+
+                return `${isMin10(timeH)}:${isMin10(timeM)}:${isMin10(timeS)}`;
+            } else return `${isMin10(timeH)}:${isMin10(timeM)}:${isMin10(timeS+sec)}`
+        },
+        upMin: (min) => {
+            if ((timeM + min) >= 60) {
+                let allTimeSec = timeH*3600 + timeM*60 + timeS;
+                allTimeSec += min*60;
+
+                timeH = Math.floor(allTimeSec/3600);
+                timeM = Math.floor((allTimeSec%3600)/60);
+                timeS = Math.floor(allTimeSec%60);
+
+                return `${isMin10(timeH)}:${isMin10(timeM)}:${isMin10(timeS)}`;
+            } else return `${isMin10(timeH)}:${isMin10(timeM + min)}:${isMin10(timeS)}`;
+        },
+        upHour: (hour) => {
+            if ((timeM + hour) >= 24) {
+                let allTimeSec = timeH*3600 + timeM*60 + timeS;
+                allTimeSec += hour*3600;
+
+                timeH = Math.floor(allTimeSec/3600) % 24;
+                timeM = Math.floor((allTimeSec%3600)/60);
+                timeS = Math.floor(allTimeSec%60);
+
+                return `${isMin10(timeH)}:${isMin10(timeM)}:${isMin10(timeS)}`;
+            } else return `${isMin10(timeH + hour)}:${isMin10(timeM)}:${isMin10(timeS)}`;
+        },
+    }
+    document.write(workWithTime.printTime() + "<br>");
+    document.write(workWithTime.upSeconds(40) + "<br>");
+    document.write(workWithTime.upMin(240) + "<br>");
+    document.write(workWithTime.upHour(40) + "<br>");
 }
