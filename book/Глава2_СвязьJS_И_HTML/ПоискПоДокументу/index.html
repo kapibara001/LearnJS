@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="elem">
+        <div id="elem-content">getElementById("id"): Element</div>
+    </div>
+    <script>
+        let elem = document.getElementById("elem"); // Поиск в документе при помощи объекта DOM document.getElementByid(id)
+        elem.style.backgroundColor = "red";
+    </script>
+
+
+    <div id="elem2">
+        <div id="elem2-content">id.style.backgroundColor: Element2</div>
+    </div>
+    <script>
+        elem2.style.backgroundColor = "green"; // имя elem2 зарезервировано в id, что позволяет нам не создавать перемунню с поиском id
+        // Такое сработает только в том случае, если нигде перед этим не объявлена переменная с таким именем и обозначающая другое
+        // В реальной жизни лучше использовать document.getElementById.
+    </script>
+
+
+    <!-- querySelectorAll(cssCode) - поиск всех элементов, соответствующих определенному css-селектору -->
+    <ul>
+        <li>Этот</li>
+        <li>тест</li>
+    </ul>
+    <ul>
+        <li>полностью</li>
+        <li>пройден</li>
+    </ul>
+    <script>
+        let elements = document.querySelectorAll('ul > li:last-child'); // Псевдоклассы тоже работают (:hover, :active)
+      
+        document.write("querrySelectorAll(cssCode): ")
+        for (let elem of elements) {
+            document.writeln(elem.innerHTML); // "тест", "пройден"
+        }
+    </script>
+
+
+    <!-- querySelector(css) - поиск первого элемента, соответствующего определенному css-селектору -->
+    <ul>
+        <li>Этот</li>
+        <li>тест</li>
+    </ul>
+    <ul>
+        <li>полностью</li>
+        <li>пройден</li>
+    </ul>
+    <script>
+        // querySelector(css) - Метод elem.querySelector(css) возвращает первый элемент, соответствующий данному CSS-селектору.
+        // Работает как querySelectorAll(css)[0]
+        let elements2 = document.querySelector('ul > li:last-child');
+
+        document.write("querrySelector(cssCode): " + elements2.innerHTML);
+    </script>
+    <br>
+
+
+    <!-- matches - Метод elem.matches(css) ничего не ищет, а проверяет, удовлетворяет ли elem CSS-селектору, и возвращает true или false. -->
+    <a class="por">...</a>
+    <a href="http://ya.ru">...</a>  
+    <script>
+        for(let el in document.body.children) {
+            if (el.match('.por')) document.write(`Ссылка на архив: ${el.innerHTML}`);
+        }
+    </script>
+
+
+    <!-- elem.closest(css) - поиск родителя элмента, соотвествующего css-селектору -->
+    <h1>Содержание</h1>
+
+    <div class="contents">
+        <ul class="book">
+            <li class="chapter">Глава 1</li>
+            <li class="chapter">Глава 2</li>
+        </ul>
+    </div>
+    <script>
+        let chapter = document.querySelector('.chapter');
+
+        document.write(chapter.closest('.book')); // [object HTMLUListElement]
+        document.write(chapter.closest('.contents')); // [object HTMLDivElement]
+
+        document.write(chapter.closest('h1')) // null - не предок
+    </script>
+</body>
+</html>
