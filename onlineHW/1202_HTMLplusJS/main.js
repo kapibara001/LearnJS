@@ -24,9 +24,7 @@
     let forChangeClass = document.getElementsByClassName("generalClass");
     for (let i = 0; i < forChangeClass.length; i++) {
         document.getElementsByClassName("generalClass")[i].innerText = "2.2) Измнененный текст"
-        
         document.getElementsByClassName("generalClass")[i].style.backgroundColor = "red"; // 3
-        
         // document.getElementsByClassName("generalClass")[i].remove(); // 4
     }
 }
@@ -41,5 +39,25 @@
 }
 
 {  // 6
-    
+    let element = document.getElementById("myElement");
+    element.setAttribute("data-custom", "newValue"); // Добавление атрибута data-custom со значением newValue
+
+    let myClass = document.getElementsByClassName("generalClass");
+    for (let i = 0; i < myClass.length; i++) {
+        myClass[i].setAttribute("data-new", "added");
+    }
+}
+
+{ // 7
+    let elemts = document.getElementById("myElement");
+    document.body.prepend(elemts); // prepend - добавление в начало документа
+
+    let createDivConateiner = document.createElement('div');
+    createDivConateiner.id = "container";
+    document.body.appendChild(createDivConateiner);
+
+    let classGeneralClass = document.getElementsByClassName("generalClass");
+    for (let i = 0; i < classGeneralClass.length; i++) {
+        document.getElementById("container").appendChild(classGeneralClass[i]);
+    }
 }
