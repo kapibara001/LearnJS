@@ -57,7 +57,29 @@
     document.body.appendChild(createDivConateiner);
 
     let classGeneralClass = document.getElementsByClassName("generalClass");
-    for (let i = 0; i < classGeneralClass.length; i++) {
-        document.getElementById("container").appendChild(classGeneralClass[i]);
+    // for (let i = 0; i <= classGeneralClass.length; i++) {
+    //     document.getElementById("container").appendChild(classGeneralClass[i]);
+    // }
+    document.body.append(...classGeneralClass);
+}
+
+{ // 8
+    let divList = document.createElement('div');
+    divList.id = "forlist8";
+    document.body.append(divList);
+
+    let listid = document.getElementById("forlist8");
+    let createList = document.createElement('ul');
+
+    for(let i = 1; i < 4; i++) {
+        let liElement = document.createElement('li');
+        liElement.innerText = `Элемент ${i}`;
+        createList.appendChild(liElement);
     }
+
+    listid.appendChild(createList);
+}
+
+{
+    
 }
