@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Forms</h1>
+    <form action="#"> <!-- action - место, куда будет идти запрос. В нашем случае мы поставили #, чтобы форма обрщалась сама к себе -->
+        <input type="text" name="name" id="userName"> <!-- name - ИМЯ GET-запроса, который отправится на сервер для обработки -->
+        <button id="saveName">Скопировать</button>
+    </form>
+
+    <h1>Password Generation</h1>
+    <form action="#"> <!-- При работе с формами надо привязываться к событию sumbmit(отправка), а не onclick(нажатие кнопки) -->
+        <label for="lenght">
+            Passwords-lenght: 
+        </label>
+        <input type="number" name="lenght" id="lenghtPass" min="4" max="20" required placeholder="Количество символов"> <!-- min и max указывают минимальную и максимальную границу. 
+        required - не позволяет отправить пустую форму -->
+        <div>
+            <label for="EnableLowerLetters">a-z</label>
+            <input type="checkbox" name="EnableLowerLetters" id="checkboxLowerSymbols" checked>
+        </div>
+
+        <div>
+            <label for="EnableUpperLetters">A-Z</label>
+            <input type="checkbox" name="EnableUpperLetters" id="checkboxUpperSymbols" checked>
+        </div>
+
+        <div>
+            <label for="SpecialSymbols">Special Symbols</label>
+            <input type="checkbox" name="SpecialSymbols" id="SpecSym" checked>
+        </div>
+
+        <div>
+            <label for="numbers">0-9</label>
+            <input type="checkbox" name="numbers" id="nums" checked>
+        </div>
+
+        <!-- Символы, которые мы хотим ИСКЛЮЧИТЬ из нашего генерируемого пароля -->
+        <div>
+            <label for="exluded-symbols">Excluded symbols</label>
+            <input type="text" name="exluded-symbols" id="exludedSymbols" placeholder="Запрещенные символы">
+        </div>
+        <button id="StartGenerationPassword">Генерация пароля</button>
+        <div id="readyPassword"></div>
+    </form>
+
+    <h1>Factorial Calculator</h1>
+    <form id="factorialForm">
+        <label for="inputNum">Факториал какого числа вычисляем?</label>
+        <input type="number" name="inputNum" id="inNum" placeholder="100" min="1" required>
+
+        <button>Вычислить факториал</button>
+    </form>
+    <p id="factResult"></p>
+</body>
+</html>
