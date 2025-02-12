@@ -91,5 +91,19 @@
 
         document.write(chapter.closest('h1')) // null - не предок
     </script>
+
+
+    <!-- getElementsBy* -->
+    <!-- Существуют также другие методы поиска элементов по тегу, классу и так далее.
+    На данный момент, они скорее исторические, так как querySelector более чем эффективен. -->
+
+    <!--    elem.getElementsByTagName(tag) -- ищет элементы с данным тегом и возвращает их коллекцию. Передав "*" вместо тега, можно получить всех потомков.
+            elem.getElementsByClassName(className) -- возвращает элементы, которые имеют данный CSS-класс.
+            document.getElementsByName(name) -- возвращает элементы с заданным атрибутом name. Очень редко используется. -->
+    <script>
+        let divs = document.getElementsByTagName('div'); // получить все элементы div в документе
+    </script>
+
+    <!-- Не забываем про букву "s"! Есть, как пример, функция getElementByTagName (возвращает 1 попавшийся элемент), а есть getElementsByTagName (elementS) - возвращает списком все элементы, подхлодящие под селектор-->
 </body>
 </html>
