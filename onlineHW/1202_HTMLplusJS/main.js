@@ -80,6 +80,51 @@
     listid.appendChild(createList);
 }
 
-{
+{ // 9
+    let myEl = document.getElementById("myElement");
+    let createEl = document.createElement('div');
+    createEl.appendChild(myEl);
+    document.body.appendChild(createEl);
+
+    let myClass = document.getElementsByClassName('generalClass');
+    for (let classObj of myClass) {
+        let fatherSpan = document.createElement('span');
+        fatherSpan.appendChild(classObj);
+        document.body.appendChild(fatherSpan);
+    }
+}
+
+{ // 10
+    let createTalbe = document.createElement('table');
+    let thead = document.createElement('thead');
+    let trEl = document.createElement('tr');
+
+    for (let el = 1; el <= 3; el++) {
+        let tdEl = document.createElement('td');
+        tdEl.innerText = `Заголовок ${el}`;
+
+        trEl.appendChild(tdEl);
+    }
+
+
+    thead.appendChild(trEl);
+    createTalbe.appendChild(thead);
+
+    let tbody = document.createElement('tbody');
+    let trTbody = document.createElement('tr');
+    trTbody.style.textAlign = 'center';
+
+    for (let el = 1; el <= 3; el++) {
+        let tdEl = document.createElement('td');
+        tdEl.innerText = `Элемент ${el}`;
+
+        trTbody.appendChild(tdEl);
+    }
+
+    tbody.appendChild(trTbody);
+
+    createTalbe.appendChild(tbody);
+
+    document.body.append(createTalbe);
     
 }
