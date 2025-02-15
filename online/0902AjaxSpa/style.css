@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: consolas;
+    background-image: url("app/stars.jpg");
+    
+}
+
+.main-header{
+    text-align: center;
+    padding: 10px;
+    color: white;
+    font-size: 36pt;
+}
+
+.episodes {
+    width: 100%;
+}
+
+.episode {
+    width: 60%;
+    margin: 20px auto;
+    border: 2px solid grey;
+    padding: 15px;
+    background-color: darkslateblue;
+    color: white;
+    border-radius: 15px;
+}
