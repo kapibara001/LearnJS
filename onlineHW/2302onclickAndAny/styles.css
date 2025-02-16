@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.secondExersize {
+    display: flex;
+    align-items: center;
+
+    margin: 20px 0;
+}
+
+.listPhoto {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.imgClass img {
+    width: 200px;
+    height: 150px;
+}
+
+
+.thirdContainer {
+    display: flex;
+    flex-direction: column;
+}
+.Text {
+    margin: 10px 10px;
+    border: 2px solid black;
+}
+.par {
+    background-color: rgb(73, 82, 163);
+    color: white;
+    align-items: center;
+}
+.headerPad, .parText {
+    padding: 7px 15px;
+    border-bottom: 2px solid black;
+
+    height: 100%;
+}
+.headerPad {
+    font-size: 30px;
+    cursor: pointer;
+}
+.parText {
+    background-color: aqua;
+    color: black;
+    display: none;
+}
+.parText p {
+    hyphens: auto;
+}
