@@ -52,3 +52,29 @@
 .parText p {
     hyphens: auto;
 }
+
+
+
+.scrollContainer {
+    width: 100%;
+    height: max-content;
+
+    background-color: bisque;
+}
+.scrollContent {
+    margin: 0 15px;
+    padding-bottom: 7px;
+}
+#scrollText{
+    padding: 0 10px;
+}
+#scrollText p {
+    font-size: 17px;
+    margin: 10px 0;
+}
+#addScrollText {
+    width: 50%;
+    padding: 10px 0;
+
+    border-radius: 30px;
+}
