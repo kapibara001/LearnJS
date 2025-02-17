@@ -134,7 +134,6 @@
             checkTextForContinue();
         } else {
             checkTextForContinue();
-
             addTextBtn.style.display = "none";
         }
     }
