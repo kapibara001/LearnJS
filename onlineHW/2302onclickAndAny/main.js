@@ -106,8 +106,7 @@
     }
 }
 
-//{
- // 4
+{ // 4
     // Используемые переменные
     let creatingTextParagraph = document.getElementById("scrollText");
     let addTextBtn = document.getElementById("addScrollText");
@@ -146,4 +145,36 @@
     
         creatingTextParagraph.appendChild(paragraphCreate);
     }
-//}
+}
+
+
+{ // 5
+
+}
+
+
+{ // 6
+    // Используемые переменные
+    let links = [
+        "ibdex.html", "http://google.com", "https://listep.org", "https://mystat.itstep.org", ".apps/html2.jpg", "IWantPizza",
+    ];
+    let linkCont = document.getElementById('linkList');
+
+    // Формирование и отрисовка ссылки и ее текста на экране
+    for (let i = 0; i < links.length; i++) {
+        let liForLink = document.createElement('li')
+        let create = document.createElement('a');
+        create.href = links[i];
+        create.innerText = links[i];
+
+        if (!create.innerHTML.startsWith("http")) {
+            create.style.textDecoration = "none";   
+        } else {
+            create.style.textDecorationStyle = "dotted";
+            create.style.textUnderlinePosition = "under";
+        }
+
+        liForLink.appendChild(create);
+        linkCont.appendChild(liForLink);
+    }
+}
