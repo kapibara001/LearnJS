@@ -1,8 +1,3 @@
-* {
-    margin: 10;
-    padding: 0;
-}
-
 .secondExersize {
     display: flex;
     align-items: center;
@@ -43,11 +38,13 @@
 .headerPad {
     font-size: 30px;
     cursor: pointer;
+    margin: 0;
 }
 .parText {
     background-color: aqua;
     color: black;
     display: none;
+    margin: 0;
 }
 .parText p {
     hyphens: auto;

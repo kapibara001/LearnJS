@@ -180,6 +180,17 @@
 }
 
 
-{
-    
-}
+// {
+    // Необходимые константы 
+    const linesForChangeColor = document.getElementsByClassName("changeColor");
+
+
+    // Функция для окрашивания строки при помощи нажатия курсора на строку
+    for (let i = 0; i < linesForChangeColor.length; i++) {
+        linesForChangeColor[i].addEventListener('click', () => {
+            if (!linesForChangeColor[i].style.backgroundColor) {
+                linesForChangeColor[i].style.backgroundColor = "#F9B43E";
+            } else { linesForChangeColor[i].style.backgroundColor = ""; }
+        })
+    }
+// }
