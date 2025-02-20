@@ -180,28 +180,69 @@
 }
 
 
-// {
+{ // 7
     // необоюходмые константы
     const changeColorList = document.getElementById("List");
 
     // Храним ссылку на выделенный элемент
     let selected = null;
 
-    changeColorList.addEventListener('click', (event) => {
-        if (event.target.tagName === "LI") {
-            // Если уже есть выделенный элемент, убираем у него класс
+    // Функция для вкл/выкл подсветки строк
+    changeColorList.addEventListener('mousedown', (element) => {
+        if (element.target.tagName === "LI") {
             if (selected) {
                 selected.classList.remove('selected');
             }
 
-            // Если кликнули по новому элементу, добавляем класс
-            if (selected !== event.target) {
-                event.target.classList.add('selected');
-                selected = event.target;
+            if (selected !== element.target) {
+                if (element.shiftKey && element.button === 0) {
+                    element.target.classList.add('selected');
+                } else if(element.button === 0) {
+                    element.target.classList.add('selected');
+                    selected = element.target;
+                } else {
+                    selected = null;
+                }
             } else {
-                // Если кликнули по тому же элементу, сбрасываем selected
                 selected = null;
             }
-        }
+        }}
+    );
+}
+
+
+// 8
+// {}
+    // Необходмые константы 
+    const inputArea = document.getElementById('saveArea');
+    const pText = document.getElementById('saveDArea');
+
+    pText.textContent = null;
+    // let nowText = false;
+    // pArea.textContent = "";
+    // let forConvertedText = "";
+
+    // Обработчики события(функция) нажатия кнопок CTRL+E и CTRL+S
+    document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.key == "s" || event.ctrlKey && event.key == "S") {
+                if (inputArea.value.trim() != "") {
+                    // console.log(inputArea.value);
+                    pText.textContent = inputArea.value;
+                    pText.style.display = "block";
+                    inputArea.style.display = "none";
+                } else {
+                    alert("Пустой текст");
+                    pText.textContent = null; // На всякий
+                }
+            }
     });
-// }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.ctrlKey && event.key == "e" || event.ctrlKey && event.key == "E") {
+            if (pText.textContent != '') {
+                inputArea.value = pText.textContent;
+                pText.style.display = "none";
+                inputArea.style.display = "block";
+            }
+        }
+    }); 

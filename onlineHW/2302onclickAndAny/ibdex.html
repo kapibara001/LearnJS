@@ -121,5 +121,22 @@
             <li>Officia itaque fugit eligendi modi nam eveniet magni nesciunt totam dolores ipsum est nulla qui hic doloremque cum veritatis, ducimus laudantium quisquam!</li>
         </ol>
     </div>
+
+
+    <h2>8 задание</h2>
+    <p class="headP">Press Cntrl+E for edit text.</p>
+    <p class="headP">Press Cntrl+S for Save text.</p>
+    <hr>
+    <textarea id="saveArea" oninput="resizeTextarea(this)" placeholder="Your Text Here..."></textarea>
+    <script>
+        function resizeTextarea(textarea) {
+            textarea.style.height = "auto"; // Сбрасываем высоту
+            textarea.style.height = textarea.scrollHeight + "px"; // Устанавливаем новую высоту
+        }
+    </script>
+    <p id="saveDArea" style="display: none;"></p>
+
+
+    
 </body>
 </html>

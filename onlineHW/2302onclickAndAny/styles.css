@@ -80,3 +80,20 @@
 .selected {
     background-color: orange;
 }
+
+
+.headP {
+    margin: 5px 0;
+}
+#saveArea, .saveDArea {
+    width: 300px;
+    padding: 10px;
+    resize: none;
+    
+    border-radius: 15px;
+}
+#saveDArea {
+    font-size: 30px;
+    background-color: aqua;
+    padding: 10px;
+}
