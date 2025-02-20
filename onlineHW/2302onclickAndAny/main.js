@@ -181,16 +181,27 @@
 
 
 // {
-    // Необходимые константы 
-    const linesForChangeColor = document.getElementsByClassName("changeColor");
+    // необоюходмые константы
+    const changeColorList = document.getElementById("List");
 
+    // Храним ссылку на выделенный элемент
+    let selected = null;
 
-    // Функция для окрашивания строки при помощи нажатия курсора на строку
-    for (let i = 0; i < linesForChangeColor.length; i++) {
-        linesForChangeColor[i].addEventListener('click', () => {
-            if (!linesForChangeColor[i].style.backgroundColor) {
-                linesForChangeColor[i].style.backgroundColor = "#F9B43E";
-            } else { linesForChangeColor[i].style.backgroundColor = ""; }
-        })
-    }
+    changeColorList.addEventListener('click', (event) => {
+        if (event.target.tagName === "LI") {
+            // Если уже есть выделенный элемент, убираем у него класс
+            if (selected) {
+                selected.classList.remove('selected');
+            }
+
+            // Если кликнули по новому элементу, добавляем класс
+            if (selected !== event.target) {
+                event.target.classList.add('selected');
+                selected = event.target;
+            } else {
+                // Если кликнули по тому же элементу, сбрасываем selected
+                selected = null;
+            }
+        }
+    });
 // }
