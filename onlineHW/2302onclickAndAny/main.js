@@ -251,6 +251,9 @@
 
 // 9
 // {
-    
-
+    // Используемые константы 
+    const AGETABLE = document.getElementById("table3");
+    const TBODY = document.querySelector("tbody");
+    const TR = TBODY.querySelectorAll('tr');
+    const TD = TR.querySelector('td');
 // }
