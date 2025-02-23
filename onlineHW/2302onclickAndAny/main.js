@@ -254,6 +254,19 @@
     // Используемые константы 
     const AGETABLE = document.getElementById("table3");
     const TBODY = document.querySelector("tbody");
-    const TR = TBODY.querySelectorAll('tr');
-    const TD = TR.querySelector('td');
+    const ROWS = Array.from(document.querySelectorAll('tr')); // Находим все ряды tbody
+
+    AGETABLE.addEventListener('click', () => {
+        ROWS.sort((rowA, rowB) => {
+            let ageA = parseInt(rowA.cells[2].textContent);
+            let ageB = parseInt(rowB.cells[2].textContent);
+    
+            return ageA - ageB;
+        })
+    
+        TBODY.innerHTML = "";
+        
+        AGETABLE.innerText = "Age ⬆"
+        ROWS.forEach(row => TBODY.appendChild(row));
+    })
 // }
