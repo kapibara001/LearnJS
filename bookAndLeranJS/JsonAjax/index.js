@@ -162,19 +162,7 @@
     Синтаксис: JSON.parse(str, [reviver]);
 */
 {
-    let userStr = '{
-        "FirstName": "Nicolas",
-        "LastName": "Noise",
-        "Age": 20,
-        "isStudent": true,
-        "ContactInfo": {
-            "Phone": "098-192-999-9012",
-            "email": ""
-        },
-        "Disciplines": [
-            "Math", "History", "English"
-        ]
-    }';
+    let userStr = '{ "FirstName": "Nicolas", "LastName": "Noise", "Age": 20, "isStudent": true, "ContactInfo": { "Phone": "098-192-999-9012", "email": "" }, Disciplines": [ "Math", "History", "English" ] }';
 
     let userParse = JSON.parse(userStr);
     console.log(userParse.FirstName);
