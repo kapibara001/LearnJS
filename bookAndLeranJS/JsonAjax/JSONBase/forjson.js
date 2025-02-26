@@ -21,7 +21,7 @@
  * }
  * 
  * JSON не поддерживает: методы объекта(функциивнутри объекта), свойства объекта типа Symbol, свойства, которые являются undefined
- */ 
+ */
 
 
 /** 
@@ -35,15 +35,15 @@
  */
 {
     let user = {
-        "FirstName" : "Nicolas",
-        "LastName" : "Noise",
-        "Age" : 20,
-        "isStudent" : true,
-        "ContactInfo" : {
-            "Phone" : "098-192-999-9012",
-            "email" : NaN,
+        "FirstName": "Nicolas",
+        "LastName": "Noise",
+        "Age": 20,
+        "isStudent": true,
+        "ContactInfo": {
+            "Phone": "098-192-999-9012",
+            "email": NaN,
         },
-        "Disciplines" : [
+        "Disciplines": [
             "Math", "History", "English",
         ]
     }
@@ -82,15 +82,15 @@
 */
 {
     let user = {
-        "FirstName" : "Nicolas",
-        "LastName" : "Noise",
-        "Age" : 20,
-        "isStudent" : true,
-        "ContactInfo" : {
-            "Phone" : "098-192-999-9012",
-            "email" : NaN,
+        "FirstName": "Nicolas",
+        "LastName": "Noise",
+        "Age": 20,
+        "isStudent": true,
+        "ContactInfo": {
+            "Phone": "098-192-999-9012",
+            "email": NaN,
         },
-        "Disciplines" : [
+        "Disciplines": [
             "Math", "History", "English",
         ]
     }
@@ -114,19 +114,19 @@
 */
 {
     let user = {
-        "FirstName" : "Nicolas",
-        "LastName" : "Noise",
-        "Age" : 20,
-        "isStudent" : true,
-        "ContactInfo" : {
-            "Phone" : "098-192-999-9012",
-            "email" : NaN,
+        "FirstName": "Nicolas",
+        "LastName": "Noise",
+        "Age": 20,
+        "isStudent": true,
+        "ContactInfo": {
+            "Phone": "098-192-999-9012",
+            "email": NaN,
         },
-        "Disciplines" : [
+        "Disciplines": [
             "Math", "History", "English",
         ]
     }
-    
+
     let jsonPerson3 = JSON.stringify(user, ["FirstName", "LastName"]);
     console.log(jsonPerson3); // {"FirstName":"Nicolas","LastName":"Noise"}
 }
@@ -137,20 +137,23 @@
 */
 {
     let user = {
-        "FirstName" : "Nicolas",
-        "LastName" : "Noise",
-        "Age" : 20,
-        "isStudent" : true,
-        "ContactInfo" : {
-            "Phone" : "098-192-999-9012",
-            "email" : NaN,
+        "FirstName": "Nicolas",
+        "LastName": "Noise",
+        "Age": 20,
+        "isStudent": true,
+        "ContactInfo": {
+            "Phone": "098-192-999-9012",
+            "email": NaN,
         },
-        "Disciplines" : [
+        "Disciplines": [
             "Math", "History", "English",
         ]
     }
 
-    console.log(user, null, 1) // Если бы у нас не было цифры, вывелось бы сплошным текстом. С цифрой вывелось также, как и объявлено(в таком же виде)
+    console.log(JSON.stringify(user, ["Age", "LastName"], 1)) // {
+    //                                                              "Age": 20,
+    //                                                              "LastName": "Noise"
+    //                                                           }
 }
 
 
@@ -162,9 +165,38 @@
     Синтаксис: JSON.parse(str, [reviver]);
 */
 {
-    let userStr = '{ "FirstName": "Nicolas", "LastName": "Noise", "Age": 20, "isStudent": true, "ContactInfo": { "Phone": "098-192-999-9012", "email": "" }, Disciplines": [ "Math", "History", "English" ] }';
+/*
+    let personStr = {
+        'firstname': 'Andrey',
+        'lastname': 'Ivanov',
+        'age': 20,
+        'isStudent': true,
+        'contacts': {
+            'phone': '+1-272-980-22-15',
+            'email': 'forwork@gmail.com',
+        },
+        'disciplines': [
+            'Math', 'History', 'Machine engineering',
+        ]
+    };
 
-    let userParse = JSON.parse(userStr);
-    console.log(userParse.FirstName);
-    console.log(userParse.ContactInfo.Phone);
+    let person = JSON.parse(personStr);
+    console.log(person.age);
+*/
+}
+
+/* 
+    Также присутсвует 2ой необязательный параметр reviver, который может быть только функцией, проверяющей значения в объекте 
+*/
+{
+    personStr = '{"firstname": "Andey", "lastname":"Ivanov", "age": 20}';
+
+    person = JSON.parse(personStr, checkage2); // Применение функции
+    function checkage2(key, value) {
+        if (key === "age" && value >= 18) {
+            return undefined
+        }
+        return value;
+    }
+    console.log(person); // {firstname: 'Andey', lastname: 'Ivanov'} (без поля age)
 }
