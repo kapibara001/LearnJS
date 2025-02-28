@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form" action="">
+        <input type="text" name="name" id="nameinp" placeholder="Ваше имя">
+        <input type="text" name="phone" id="phoneinp" placeholder="Ваш телефон">
+        <input type="submit" id="sybmit-btn" value="Оставить заявку">
+    </form>
+    <script>
+        let subbliBtn = document.getElementById("sybmit-btn");
+        subbliBtn.onclick = function() {
+            let form = document.getElementById("form");
+            let formData = new FormData(form); // Автматически преобразует данные form в вид ключей и значений
+            formData.append("date", new Date().toLocaleString()); // Выполняет добавление дополнительного параметра (ключ, значение)
+
+
+            let request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+            
+            request.open("POST", "server.php");
+            
+            request.onreadystatechange = function() {
+                if (request.status === 200 && request.readyState === 4) {
+                    document.write(`Здравствуйте, ${formData.get("name")}. Мы перезвоним вам через минутку!`);
+                } // formData.get("name") - находим объект formdata и хотим получить из него значение из <input name="name">
+            }
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            request.send(formData);
+        }
+    </script>
+</body>
+</html>

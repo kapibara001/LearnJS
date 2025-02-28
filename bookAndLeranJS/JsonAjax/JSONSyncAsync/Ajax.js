@@ -90,7 +90,7 @@
 
             console.log(request.statusText); // OK -(status 200) // Если бы было 404, значение будет "Not Found"
             
-            alert(request.response); // Вспылвает окошко с кодом страницы HTML, если не успешно, и "Hello World! File 
+            // alert(request.response); // Вспылвает окошко с кодом страницы HTML, если не успешно, и "Hello World! File 
             // for Ajax JS", если все супер
         }
     }
@@ -118,12 +118,36 @@
             if (request.readyState === 4) {
                 let person = request.response;
                 if (person.name === "Johnson") { 
-                    console.log(person); // {name: 'Johnson', age: 23}
+                    console.log(person.name); // {name: 'Johnson', age: 23}
                 }
                 if (person.name === "Jonson") { // Не выведется т.к нет такого
                     console.log(person);
                 }
             }
+        }
+    }
+
+    request.send();
+}
+
+/* 
+    responseXML - ответ в формате XML.
+*/
+{
+    let request;
+    if (window.XMLHttpRequest) {
+        request = new XMLHttpRequest();
+    } else {
+        request = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    request.open("GET", "person.xml");
+    request.onreadystatechange = function() {
+        if (request.status === 200 && request.readyState === 4) {
+            console.log(request.responseXML); 
+            // Если мы хотим получить данные из xml файла в таком же виде, нужно использовать xml данные - (имя_запроса.responseXML),
+            // т.к нет responseType'а, настроенного на xml, а если применить какой-то не тот responseType, будет выведено сообщение 
+            // об ошибке
         }
     }
 
