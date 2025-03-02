@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="myfile.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Registration Form</title>
+</head>
+<body>
+    <form action="" method="GET" id="regForm">
+        <b>FirstName:</b>
+        <input type="text" name="name" id="firstname-inp" placeholder="FirstName">
+
+        <b>LastName:</b>
+        <input type="text" name="lastname" id="lastname-inp" placeholder="LastName">
+        <br>
+
+        <b>Login:</b>
+        <input type="text" name="login" id="login-inp" placeholder="Login">
+
+        <b>Password:</b>
+        <input type="password" name="password" id="password-inp" placeholder="Password">
+        <br>
+
+        <b>Email:</b>   
+        <input type="email" name="mail" id="mail-inp" placeholder="Mymail@mail">
+        <br>
+
+        <b>Phone num:</b>
+        <input type="phone" name="phone" id="phone-inp" placeholder="7XXXXXXXXXX" required>
+    
+        <b>Code:</b>
+        <input type="number" name="code" id="code-inp" required>
+        <br>
+
+        <input type="checkbox" name="accept_rules" required style="margin-top: 10px;">
+        <label for="accept_rules">
+            I accept all rules.
+        </label>
+        <br>
+
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
