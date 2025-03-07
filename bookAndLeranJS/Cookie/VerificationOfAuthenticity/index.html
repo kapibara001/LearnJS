@@ -8,7 +8,7 @@
     <title>Registration Form</title>
 </head>
 <body>
-    <form action="" method="GET" id="regForm">
+    <form action="" method="GET" onsubmit="return checkForm()" id="regForm">
         <b>FirstName:</b>
         <input type="text" name="name" id="firstname-inp" placeholder="FirstName">
 
@@ -28,19 +28,105 @@
         <br>
 
         <b>Phone num:</b>
-        <input type="phone" name="phone" id="phone-inp" placeholder="7XXXXXXXXXX" required>
+        <input type="phone" name="phone" id="phone-inp" placeholder="7XXXXXXXXXX">
     
         <b>Code:</b>
-        <input type="number" name="code" id="code-inp" required>
+        <input type="number" name="code" id="code-inp">
         <br>
 
-        <input type="checkbox" name="accept_rules" required style="margin-top: 10px;">
-        <label for="accept_rules">
+        <input type="checkbox" name="accept_rules" style="margin-top: 10px;" id="agreeBtn">
+        <label for="accept_rules" >
             I accept all rules.
         </label>
         <br>
 
         <input type="submit" value="Register">
     </form>
+
+    <script>
+        function checkForm(e) {
+            // ПРОВЕРКА ИМЕНИ ПОЛЬЗОВАТЕЛЯ
+
+            let firstname = document.getElementById("firstname-inp").value;
+
+            // let firstname_RegExp = /[^a-z]/i; // Шаблон с заг/стр буквами
+
+            // let firstname_RegExp = /^[A-Z][a-z]*$/; // Первая буква заглавная, потом строчные
+
+            // let firstname_RegExp = /^[A-Z][a-z]*(-[A-Z][a-z]*)*$/; // Проверка на имена по типу Jean-Paul
+            /* 
+                ^[A-Z] - начинается с заглавной буквы;
+                [a-z]* - 0 или более строчных букв
+                (-[A-Z][a-z]*) - (-)группа из дефиса->([A-Z])любая заглавная->([a-z]*)0 или более строчных->($)указывает, что должно соответствовать целиком
+            */
+
+            let firstname_RegExp = /^[A-Za-z]'?[A-Za-z]*$/ // Проверка на имена по типу O'Nill, o'nill
+            /* 
+                ^[A-Za-z] - Начало с Заглавной или строчной
+                '? - апостроф может либо быть, либо не быть
+                [A-Za-z]* - 0 или более любых букв
+                $ - значение должно соотметствовать всему шаблону
+            */
+
+            if (!firstname_RegExp.test(firstname)) { 
+                alert("Name is incorrect");
+                return false;
+            }
+                
+
+            // ПРОВЕРКА ПАРОЛЯ - в полной власти разработчика. В данном случае легкая проверка
+            passwordValue = document.getElementById("password-inp").value;
+            // требование хотя-бы одного смвола нижнего, верхнего регистра и одну цифру
+            /* Поскольку  требования  задаются  на  содержание  
+            определенных  символов  и  не  ограничивают  наличие  
+            других  символов,  их  проверку  будем  проводить  «от  
+            обратного» */
+            if (! /\d/.test(passwordValue)) {
+                alert("Your password has 0 digits. Fix it");
+                return false
+            } 
+            if (! /[A-Z]/.test(passwordValue)) { // Проверка на ниличие заглавных символов
+                alert("Your passwords has 0 A-Z symbols. Fix it");
+                return false
+            } 
+            if (! /[a-z]/.test(passwordValue)) { // Проверка на ниличие строчных символов
+                alert("Your passwords has 0 a-z symbols. Fix it");
+                return false
+            }
+
+
+            // Проверка почты - просто пример т.к спорная тема
+            emailValue = document.getElementById("mail-inp").value;
+            // Очень спорные проверки в обществе разработчиков из-за очень большого количества нюансов
+            emailRegExp = /^\w+([-+.’]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            if (! emailRegExp.test(emailValue)) {
+                alert("Email is incorrect. Fix it and try again!");
+            }
+
+
+            // Проверка номера телефона
+            let phoneValue = document.getElementById("phone-inp").value;
+            if (! /^\+?\d{6, 12}$/.test(phoneValue)) {
+                alert("PhoneNumber is incorrect. Fix it and try again!");
+                return false;
+            }
+
+
+            // Проверка числового кода
+            let codeVal = document.getElementById("code-inp");
+            if (! /\D/.test(codeVal)) {
+                alert("Code is invalid. Try again");
+                return false;
+            }
+
+
+            // Проверка на согласие
+            let agreeBtn = document.getElementById("agreeBtn").value;
+            if (agreeBtn != 'on') {
+                alert("You need to be agree with our rules for next step");
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>

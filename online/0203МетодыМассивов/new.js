@@ -25,3 +25,30 @@
     )
     console.log(`${mapSec.join(', ')}`);
 }
+
+{
+    const flora = [
+        {
+            "name": "Maxim",
+            "lname":  "Oboskalov",
+        },
+        {
+            "name": "Egor",
+            "lname": "Aolsnla",
+        },
+        {
+            "name": "Nikolay",
+            "lname":  "asdasdag",
+        },
+        {
+            "name": "Elena",
+            "lname":  "hgfhfghfgh",
+        },
+    ]
+
+    let mostShortName = flora.reduce((first, next) =>
+        (next.name.length < first.name.length) ? next : first
+    )
+
+    console.log(`Самое короткое имя: ${mostShortName.name}`);
+}

@@ -104,4 +104,5 @@
     let template = /yes/i;
     console.log(template.test(str1), template.test(str2), template.test(str3));
     // true true true 
+    console.log(template.test("good")); // false
 }
