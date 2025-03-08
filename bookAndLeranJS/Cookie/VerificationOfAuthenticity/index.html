@@ -106,15 +106,15 @@
 
             // Проверка номера телефона
             let phoneValue = document.getElementById("phone-inp").value;
-            if (! /^\+?\d{6, 12}$/.test(phoneValue)) {
+            if (! /^\+?\d{6,12}$/.test(phoneValue)) { // Отсутствие пробела в {6,12} принципиально важно
                 alert("PhoneNumber is incorrect. Fix it and try again!");
                 return false;
             }
 
 
             // Проверка числового кода
-            let codeVal = document.getElementById("code-inp");
-            if (! /\D/.test(codeVal)) {
+            let codeVal = document.getElementById("code-inp").value;
+            if (/\D/.test(codeVal)) {
                 alert("Code is invalid. Try again");
                 return false;
             }
@@ -126,6 +126,13 @@
                 alert("You need to be agree with our rules for next step");
                 return false;
             }
+
+            alert("Registration has been completed!");
+            return true;
+            /*
+                По прохождении успешной аутентификации все поля очищаютс из-за перезагрузщки нашей страницы регистрации,
+                а все данные появляются в адресной строке
+            */
         }
     </script>
 </body>
