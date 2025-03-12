@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рисование на Canvas</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="400" style="border:1px solid #000;"></canvas>
+    
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // 1. Прямоугольник
+        ctx.fillStyle = "blue";
+        ctx.fillRect(50, 50, 200, 100);
+
+        // 2. Круг
+        ctx.beginPath();
+        ctx.arc(300, 100, 50, 0, Math.PI * 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+
+        // 3. Линия
+        ctx.beginPath();
+        ctx.moveTo(50, 200);
+        ctx.lineTo(250, 300);
+        ctx.strokeStyle = "green";
+        ctx.lineWidth = 5;
+        ctx.stroke();
+        ctx.closePath();
+
+        // 4. Текст
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Привет, Canvas!", 50, 350);
+
+        // 5. Треугольник
+        ctx.beginPath();
+        ctx.moveTo(350, 250);
+        ctx.lineTo(400, 350);
+        ctx.lineTo(300, 350);
+        ctx.closePath();
+        ctx.fillStyle = "purple";
+        ctx.fill();
+
+        // 6. Градиент
+        const gradient = ctx.createLinearGradient(0, 0, 500, 0);
+        gradient.addColorStop(0, "purple");
+        gradient.addColorStop(1, "orange");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(50, 20, 200, 50);
+
+        // 7. Изображение
+        const img = new Image();
+        img.src = "https://via.placeholder.com/100"; // Заглушка изображения
+        img.onload = function() {
+            ctx.drawImage(img, 350, 50, 100, 100);
+        };
+    </script>
+</body>
+</html>
