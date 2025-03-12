@@ -51,7 +51,7 @@
 
 {
     let cookiefield = document.getElementById("moral");
-    document.cookie = "register=USER; passwor=154asd; expires=Thu, 19 Mar 2025 19:26:00 GMT; path=/"; 
+    // document.cookie = "register=USER; passwor=154asd; expires=Thu, 9 Mar 2025 19:26:00 GMT; path=/"; 
     cookiefield.innerText = document.cookie; // Куки будет показываться на странице до определенного момента(9 марта 19:11 GMT)
 
     let cookieAll = document.cookie;
@@ -66,3 +66,8 @@
         cookiefield.innerHTML += parametr + " = " + cookieObj[parametr] + "<br>";
     }
 }
+
+/*
+    Для удаления куки нет отдельных команд. Можно это сделать только тем самым, что установить куки "просрочнный" период действия.
+    
+*/

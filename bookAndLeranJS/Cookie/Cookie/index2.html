@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regiter page</title>
+</head>
+<body onload="checkReg()">
+    <div id="RegDiv"></div>
+    <script>
+        function checkReg() {
+            let RegDivEl = document.getElementById("RegDiv");
+
+            let cookie = document.cookie;
+            let cookieSplit1 = cookie.split('; ');
+            let cookieObj = {};
+
+            for (let item of cookieSplit1) {
+                let i = item.split('=');
+                cookieObj[i[0]] = i[1];
+            }
+
+            if ('register' in cookieObj) {
+                let date = new Date();
+                RegDivEl.innerHTML = `Hello, ${cookieObj['register']}! Today is ${date.toLocaleString()}.`;
+            } else {
+                RegDivEl.innerHTML = "Name: <input type='text' id='name'/> <input type='button' value='Register' onclick='regClick()'/>";
+            }
+        }
+
+        function regClick() {
+            let name = document.getElementById('name').value;
+
+            let nowDateForCookie = new Date();
+            nowDateForCookie.setTime(Date.now() * 1000 * 5);
+
+            document.cookie = `register='${name}'; expires='12 Mar 2025 5:34:00 GMT'; path=/`;
+
+            checkReg();
+        }
+    </script>
+</body>
+</html>
