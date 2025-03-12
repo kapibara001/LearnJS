@@ -4,8 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work with API</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    http://www.omdbapi.com/?i=tt3896198&apikey=97a5fe93
+    <!-- http://www.omdbapi.com/?i=tt3896198&apikey=97a5fe93 -->
+    <div class="content">
+        <div class="centerContent">
+            <div class="search">
+                <select name="Type" id="typeVideo">
+                    <option value="Film">Фильм</option>
+                    <option value="Serial">Сериал</option>
+                    <option value="Episode">Эпизод</option>
+                </select>
+
+                <label for="searchFild"></label>
+                <input type="text" name="searchFild" id="searchText" placeholder="Введите название фильма или IMDb ID">
+
+                <input type="submit" id="searchBtn" value="Найти">
+            </div> 
+        </div>        
+    </div>
+
+    <!-- Пример карточки фильма а результате поиска-->
+    <div class="card">
+        <p>Информация о фильме:</p>
+        <p>-Название: Inception</p>
+        <p>-Год выпуска: 2010</p>
+        <p>-Рейтинг: PG-13</p>
+        <p>-Жанр: Action, Adventure, Sci-Fi</p>
+        <p>-Режисер: Christopher Nolan</p>
+        <p>-Актеры: Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page</p>
+        <p>
+            -Описание: A thief who steals corporate secrets through the use of dream-sharing 
+            technology is given the inverse task of planting an idea into the mind of a C.E.O
+        </p>
+    </div>
+
+
+
+    <div id="ifLessThen900" style="display: none;">
+        <h1>Page's width < 900px</h1>
+    </div>
 </body>
 </html>
