@@ -34,7 +34,7 @@
             let nowDateForCookie = new Date();
             nowDateForCookie.setTime(Date.now() * 1000 * 5);
 
-            document.cookie = `register='${name}'; expires='12 Mar 2025 5:34:00 GMT'; path=/`;
+            document.cookie = `register=${name}; expires='12 Mar 2025 5:34:00 GMT'; path=/`;
 
             checkReg();
         }
