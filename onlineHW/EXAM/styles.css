@@ -41,7 +41,26 @@
     border-bottom: 2px solid black;
 }
 
+.card {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding: 5px;
+    margin: 10px 0;
+    grid-column-gap: 10px;
 
+    border: 1px dashed black;
+
+}
+.imgCard img {
+    max-width: 196px;
+} 
+.infFilm {
+    font-size: 25px;
+}
+.infoCard p {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
 
 
 

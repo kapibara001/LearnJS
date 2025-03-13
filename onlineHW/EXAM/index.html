@@ -4,44 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work with API</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- http://www.omdbapi.com/?i=tt3896198&apikey=97a5fe93 -->
     <div class="content">
-        <div class="centerContent">
+        <div class="centerContent" id="cenCont">
             <div class="search">
                 <select name="Type" id="typeVideo">
-                    <option value="Film">Фильм</option>
-                    <option value="Serial">Сериал</option>
-                    <option value="Episode">Эпизод</option>
+                    <option value="movie">Фильм</option>
+                    <option value="series">Сериал</option>
+                    <option value="episode">Эпизод</option>
                 </select>
 
                 <label for="searchFild"></label>
                 <input type="text" name="searchFild" id="searchText" placeholder="Введите название фильма или IMDb ID">
 
-                <input type="submit" id="searchBtn" value="Найти">
+                <input type="button" id="searchBtn" value="Найти" onsubmit="">
+                <script src="finder.js"></script>
             </div> 
+            <div class="card">
+                <!-- Пример карточки фильма а результате поиска-->
+                <div class="imgCard">
+                    <img src="apps/film-card.jpg" alt="">
+                </div>
+                <div class="infoCard">
+                    <p style="margin: 5px 5px; font-size: 50px;">Информация о фильме</p>
+                    <p>
+                        <span class="infFilm">-Название: </span>
+                        Inception
+                    </p>
+                    <p>
+                        <span class="infFilm">-Год выпуска: </span>
+                        2010
+                    </p>
+                    <p>
+                        <span class="infFilm">-Рейтинг: </span>PG-13
+                    </p>
+                    <p>
+                        <span class="infFilm">-Жанр: </span>
+                        Action, Adventure, Sci-Fi
+                    </p>
+                    <p>
+                        <span class="infFilm">-Режисер: </span>
+                        Christopher Nolan
+                    </p>
+                    <p>
+                        <span class="infFilm">-Актеры: </span>
+                        Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page
+                    </p>
+                    <p>
+                        <span class="infFilm">-Описание: </span>
+                        A thief who steals corporate secrets through the use of dream-sharing 
+                        technology is given the inverse task of planting an idea into the mind of a C.E.O
+                    </p>
+                </div>
+            </div>
         </div>        
     </div>
-
-    <!-- Пример карточки фильма а результате поиска-->
-    <div class="card">
-        <p>Информация о фильме:</p>
-        <p>-Название: Inception</p>
-        <p>-Год выпуска: 2010</p>
-        <p>-Рейтинг: PG-13</p>
-        <p>-Жанр: Action, Adventure, Sci-Fi</p>
-        <p>-Режисер: Christopher Nolan</p>
-        <p>-Актеры: Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page</p>
-        <p>
-            -Описание: A thief who steals corporate secrets through the use of dream-sharing 
-            technology is given the inverse task of planting an idea into the mind of a C.E.O
-        </p>
-    </div>
-
-
-
     <div id="ifLessThen900" style="display: none;">
         <h1>Page's width < 900px</h1>
     </div>
