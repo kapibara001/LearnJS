@@ -2,43 +2,65 @@
 const centerContent = document.getElementById("cenCont");
 const searchBtn = document.getElementById("searchBtn");
 const searchFiled = document.getElementById("searchText");
+
+let request;
+let response;
 let append = [];
 
 
 // Обработчик события нажатия кнопки "Найти"
 searchBtn.addEventListener('click', (e) => {
     if (searchFiled.value.trim() !== "") { // Если у нас не пустая строка поиска
-        if (/\d+/.test(searchFiled.value)) { // Поиск по OMDb ID (9 цифр)
+        if (/\d+/.test(searchFiled.value)) { // Поиск по OMDb ID 
             if (searchFiled.value < 9999999 && searchFiled.value > 0) {
-                let request;
                 if (window.XMLHttpRequest) {
                     request = new XMLHttpRequest();
                 } else {
                     request = new ActiveXObject("XMLHTTP");
                 }
 
-                let response = `http://www.omdbapi.com/?i=tt${fixID(searchFiled.value)}&apikey=97a5fe93`;
-                
-                request.open("GET", response);
-                request.onload = function() {
-                    if (request.status === 200) {
-                        let result = JSON.parse(request.response); // Успешно
-                        // console.log(result['Title'], result); // работает
-                        createCard(
-                            result['Poster'], result['Title'], result['Year'], 
-                            result['Rated'], result['Genre'], result['Director'],
-                            result['Actors'], result['Plot'], result['imdbID'],
-                        );
-                    }
-                }
-
-                request.send();
-
+                response = `http://www.omdbapi.com/?i=tt${fixID(searchFiled.value)}&apikey=97a5fe93`;
+                searchById(request, response);
             } else {
                 alert("Такого OMDb ID не существует");
             }
-        } else {
-            // Поиск по названию
+
+        } else { // Поиск по имени
+            if (window.XMLHttpRequest) {
+                request = new XMLHttpRequest();
+            } else {
+                request = new ActiveXObject("XMLHTTP");
+            }
+            
+            let filmName = searchFiled.value;
+            
+            response = `http://www.omdbapi.com/?s=${filmName}&apikey=97a5fe93`;
+            request.open('GET', response);
+
+            request.onload = function() {
+                if (request.status === 200) {
+                    // console.log(request.response); // Успешно. Вид: {"Search": {}, {}, {}, ...}
+                    // console.log(typeof request.response); // string
+                    let result = JSON.parse(request.response);
+                    // console.log(result["Search"][1]["Title"]); // Выходят названия фильмов
+
+                    for (let i = 0; i < result["Search"].length; i++) {
+                        // createCardByIdFull(
+                        //     result['Search'][i]['Poster'], 
+                        //     result['Search'][i]['Title'], 
+                        //     result['Search'][i]['Year'], 
+                        //     result['Search'][i]['Rated'], 
+                        //     result['Search'][i]['Genre'], 
+                        //     result['Search'][i]['Director'],
+                        //     result['Search'][i]['Actors'], 
+                        //     result['Search'][i]['Plot'], 
+                        //     result['Search'][i]['imdbID'],
+                        // );
+                    }
+                }
+            }
+
+            request.send();
         }
     } else {
         noVideo();
@@ -51,8 +73,26 @@ function noVideo() {
     alert("Такого фильма нет");
 }
 
+// Функция поиска по ID
+function searchById(request, response) {
+    request.open("GET", response);
+
+    request.onload = function() {
+        if (request.status === 200) {
+            let result = JSON.parse(request.response); // Успешно
+            createCardByIdFull(
+                result['Poster'], result['Title'], result['Year'], 
+                result['Rated'], result['Genre'], result['Director'],
+                result['Actors'], result['Plot'], result['imdbID'],
+            );
+        }
+    }
+
+    request.send();
+}
+
 // Функция добавления карточки видео на экран
-function createCard(img, name, year, rated, genre, director, actors, info, imdb) {
+function createCardByIdFull(img, name, year, rated, genre, director, actors, info, imdb) {
     if (InListCheck(append, imdb)) {
         append.push(imdb);
 
@@ -102,7 +142,7 @@ function createCard(img, name, year, rated, genre, director, actors, info, imdb)
     }
 }
 
-
+// Функция проверки наличия фильма на странице путем проверки массива, в который каждый раз добавляется el в основном коде
 function InListCheck(list, el) {
     for (let i = 0; i < list.length; i++) {
         if (list[i] == el) {
