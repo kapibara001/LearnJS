@@ -2,24 +2,24 @@
 const centerContent = document.getElementById("cenCont");
 const searchBtn = document.getElementById("searchBtn");
 const searchFiled = document.getElementById("searchText");
+const isWord = document.getElementById("searchByKeyWord");
 
 let request;
 let response;
-let append = [];
 
 
 // Обработчик события нажатия кнопки "Найти"
 searchBtn.addEventListener('click', (e) => {
+    // Очистка списка
+    const uslessCard = document.querySelectorAll('.card');
+    if (uslessCard.length === 0){}
+    else uslessCard.forEach(card => card.remove());
+
     if (searchFiled.value.trim() !== "") { // Если у нас не пустая строка поиска
         if (/\d+/.test(searchFiled.value)) { // Поиск по OMDb ID 
             if (searchFiled.value < 9999999 && searchFiled.value > 0) {
-
-                if (window.XMLHttpRequest) {
-                    request = new XMLHttpRequest();
-                } else {
-                    request = new ActiveXObject("XMLHTTP");
-                }
-
+                
+                request = Req();
                 response = `http://www.omdbapi.com/?i=tt${fixID(searchFiled.value)}&apikey=97a5fe93`;
                 searchById(request, response);
 
@@ -27,48 +27,104 @@ searchBtn.addEventListener('click', (e) => {
                 alert("Такого OMDb ID не существует");
             }
 
-        } else { // Поиск по имени
-            if (window.XMLHttpRequest) {
-                request = new XMLHttpRequest();
-            } else {
-                request = new ActiveXObject("XMLHTTP");
-            }
+        } else if(isWord.checked) { // Поиск по имени (по слову)
+            console.log("Поиск по отдельному слову");
+            request = Req();
             
+            const typeField = document.getElementById("typeVideo");
+            const videoType = typeField.value;
+            console.log(videoType);
+
             let filmName = searchFiled.value;
-            // Поставить ограничение на минимальное количетсво симвволов 
-            
-            response = `http://www.omdbapi.com/?s=${filmName}&apikey=97a5fe93`;
-            request.open('GET', response);
 
-            request.onload = function() {
-                if (request.status === 200) {
-                    // console.log(request.response); // Успешно. Вид: {"Search": {}, {}, {}, ...}
-                    let result = JSON.parse(request.response);
-                    // console.log(result["Search"][1]["Title"]); // Выходят названия фильмов
-
-                    for (let i = 0; i < result["Search"].length; i++) {
-                        let omdbid = result["Search"][i]["imdbID"];
-                        response = `http://www.omdbapi.com/?i=${omdbid}&apikey=97a5fe93`;
-                        searchById(request, response);
+            if (filmName.length < 3) { // ограничение на минимальное количетсво символов 
+                alert("Слишком короткое название");
+            } else {
+                response = checkTypeFilmS(filmName, videoType);
+                request.open('GET', response);
+    
+                request.onload = function() {
+                    if (request.status === 200) {
+                        // console.log(request.response); // Успешно. Вид: {"Search": {}, {}, {}, ...}
+                        let result = JSON.parse(request.response);
+    
+                        for (let i = 0; i < result["Search"].length; i++) {
+    
+                            request2 = Req();
+    
+                            let omdbid = result["Search"][i]["imdbID"];
+                            response = `http://www.omdbapi.com/?i=${omdbid}&apikey=97a5fe93`;
+                            searchById(request2, response);
+                        }
                     }
                 }
-            }
 
-            request.send();
-        }
+                request.send();
+                }
+            } else if (!isWord.checked) { // Поиск по полному названию
+                console.log("Поиск по полному названию")
+                request = Req();
+            
+                const typeField = document.getElementById("typeVideo");
+                const videoType = typeField.value;
+                console.log(videoType);
+
+                let filmName = searchFiled.value;
+
+                if (filmName.length < 3) { // ограничение на минимальное количетсво символов 
+                    alert("Слишком короткое название");
+                } else {
+                    response = checkTypeFilmT(filmName, videoType);
+
+                    request.open('GET', response);
+
+                    request.onload = function() {
+                        let result = JSON.parse(request.response);
+
+                        request2 = Req();
+
+                        searchById(request2, response);
+                    }
+
+                    request.send();
+                }
+            }
 
     } else {
         noVideo();
     }
 })
 
+function Req() {
+    if (window.XMLHttpRequest) {
+        request = new XMLHttpRequest();
+    } else {
+        request = new ActiveXObject("XMLHTTP");
+    } 
+    return request;
+}
+
+function checkTypeFilmS(filmName, videoType) {
+    if (videoType === "any") {
+        return `http://www.omdbapi.com/?s=${filmName}&apikey=97a5fe93`;
+    } else {
+        return `http://www.omdbapi.com/?s=${filmName}&type=${videoType}&apikey=97a5fe93`;
+    }
+}
+function checkTypeFilmT(filmName, videoType) {
+    if (videoType === "any") {
+        return `http://www.omdbapi.com/?t=${filmName}&apikey=97a5fe93`;
+    } else {
+        return `http://www.omdbapi.com/?t=${filmName}&type=${videoType}&apikey=97a5fe93`;
+    }
+}
 
 // Функция на случай если видео не найдено
 function noVideo() {
     alert("Такого фильма нет");
 }
 
-// Функция поиска по ID
+// Функция поиска по omdbID
 function searchById(request, response) {
     request.open("GET", response);
 
@@ -78,7 +134,7 @@ function searchById(request, response) {
             createCardByIdFull(
                 result['Poster'], result['Title'], result['Year'], 
                 result['Rated'], result['Genre'], result['Director'],
-                result['Actors'], result['Plot'], result['imdbID'],
+                result['Actors'], result['Plot'], result['imdbID']
             );
         }
     }
@@ -87,10 +143,7 @@ function searchById(request, response) {
 }
 
 // Функция добавления карточки видео на экран
-function createCardByIdFull(img, name, year, rated, genre, director, actors, info, imdb) {
-    if (InListCheck(append, imdb)) {
-        append.push(imdb);
-
+function createCardByIdFull(img, name, year, rated, genre, director, actors, info) {
         const classCard = document.createElement('div');
         classCard.className = 'card';
 
@@ -132,20 +185,8 @@ function createCardByIdFull(img, name, year, rated, genre, director, actors, inf
         classCard.appendChild(infoCard);
 
         centerContent.appendChild(classCard);
-    } else {
-        alert('Данный фильм уже добавлен');
-    }
-}
+} 
 
-// Функция проверки наличия фильма на странице путем проверки массива, в который каждый раз добавляется el в основном коде
-function InListCheck(list, el) {
-    for (let i = 0; i < list.length; i++) {
-        if (list[i] == el) {
-            return false;
-        }
-    } 
-    return true;
-}
 
 // Функция правильного построения OMDb ID
 function fixID(num) {

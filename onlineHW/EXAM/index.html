@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work with API</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,16 +11,21 @@
     <div class="content">
         <div class="centerContent" id="cenCont">
             <div class="search">
+                <span class="genre">Жанр:</span>
                 <select name="Type" id="typeVideo">
+                    <option value="any">Любой</option>
                     <option value="movie">Фильм</option>
                     <option value="series">Сериал</option>
                     <option value="episode">Эпизод</option>
                 </select>
 
+                <label for="isWord" class="word">По слову</label>
+                <input type="checkbox" name="isWord" id="searchByKeyWord">
+
                 <label for="searchFild"></label>
                 <input type="text" name="searchFild" id="searchText" placeholder="Введите название фильма или IMDb ID">
 
-                <input type="button" id="searchBtn" value="Найти" onsubmit="">
+                <input type="button" id="searchBtn" value="Найти">
                 <script src="finder.js"></script>
             </div> 
             <!-- <div class="card">
