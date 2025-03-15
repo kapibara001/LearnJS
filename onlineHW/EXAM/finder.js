@@ -13,6 +13,7 @@ searchBtn.addEventListener('click', (e) => {
     if (searchFiled.value.trim() !== "") { // Если у нас не пустая строка поиска
         if (/\d+/.test(searchFiled.value)) { // Поиск по OMDb ID 
             if (searchFiled.value < 9999999 && searchFiled.value > 0) {
+
                 if (window.XMLHttpRequest) {
                     request = new XMLHttpRequest();
                 } else {
@@ -21,6 +22,7 @@ searchBtn.addEventListener('click', (e) => {
 
                 response = `http://www.omdbapi.com/?i=tt${fixID(searchFiled.value)}&apikey=97a5fe93`;
                 searchById(request, response);
+
             } else {
                 alert("Такого OMDb ID не существует");
             }
@@ -33,6 +35,7 @@ searchBtn.addEventListener('click', (e) => {
             }
             
             let filmName = searchFiled.value;
+            // Поставить ограничение на минимальное количетсво симвволов 
             
             response = `http://www.omdbapi.com/?s=${filmName}&apikey=97a5fe93`;
             request.open('GET', response);
@@ -40,28 +43,20 @@ searchBtn.addEventListener('click', (e) => {
             request.onload = function() {
                 if (request.status === 200) {
                     // console.log(request.response); // Успешно. Вид: {"Search": {}, {}, {}, ...}
-                    // console.log(typeof request.response); // string
                     let result = JSON.parse(request.response);
                     // console.log(result["Search"][1]["Title"]); // Выходят названия фильмов
 
                     for (let i = 0; i < result["Search"].length; i++) {
-                        // createCardByIdFull(
-                        //     result['Search'][i]['Poster'], 
-                        //     result['Search'][i]['Title'], 
-                        //     result['Search'][i]['Year'], 
-                        //     result['Search'][i]['Rated'], 
-                        //     result['Search'][i]['Genre'], 
-                        //     result['Search'][i]['Director'],
-                        //     result['Search'][i]['Actors'], 
-                        //     result['Search'][i]['Plot'], 
-                        //     result['Search'][i]['imdbID'],
-                        // );
+                        let omdbid = result["Search"][i]["imdbID"];
+                        response = `http://www.omdbapi.com/?i=${omdbid}&apikey=97a5fe93`;
+                        searchById(request, response);
                     }
                 }
             }
 
             request.send();
         }
+
     } else {
         noVideo();
     }
