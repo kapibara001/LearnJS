@@ -1,0 +1,14 @@
+.grid-window-logo {
+    background-color: blueviolet;
+
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+}

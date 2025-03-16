@@ -1,0 +1,26 @@
+.grid-window-logo2 {
+  display: grid;
+  gap: 5px;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  width: 300px;
+  aspect-ratio: 1/1;
+}
+
+.grid-window-logo2 .red {
+  background-color: red;
+}
+
+.grid-window-logo2 .yellow {
+  background-color: yellow;
+}
+
+.grid-window-logo2 .green {
+  background-color: green;
+}
+
+.grid-window-logo2 .purple {
+  background-color: purple;
+}
