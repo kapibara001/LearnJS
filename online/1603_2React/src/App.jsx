@@ -7,13 +7,15 @@ export function App() {
   return (
     <>
       <div className="grid-window-logo2">
-        <div className="red"></div>
-        <div className="green"></div>
+        <div className="red">
+          <ButtonPageUp/>
+        </div>
+        <div className="green">
+          <ButtonPageUp/>
+        </div>
         <div className="yellow"></div>
         <div className="purple"></div>
       </div>
-      <ButtonPageUp/>
     </>
   )
 }
-
