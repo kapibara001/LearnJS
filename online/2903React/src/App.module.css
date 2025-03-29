@@ -1,0 +1,18 @@
+.wrapper-full-size {
+  width: 100vw;
+  height: 100vh;
+}
+
+.theme-day {
+  background-color: white;
+}
+
+.theme-night {
+  background-color: black;
+}
+
+.many-batteries {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
