@@ -1,0 +1,36 @@
+.navigation {
+    width: 100%;
+    height: 50px;
+
+    background-color: white;
+    border: 1px solid black;
+
+    margin-top: 20px;
+
+    display: flex;
+}
+
+.navBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: max-content;
+    height: 100%;
+    padding: 0 15px;
+
+    margin-right: 10px;
+}
+
+.navBtn:hover {
+    background-color: rgb(194, 194, 194);
+    animation-name: 'textHover';
+    animation-duration: 2s;
+}
+
+@keyframes textHover {
+    100% {
+        transform: scale(1.3);
+        color: red;
+    }
+}

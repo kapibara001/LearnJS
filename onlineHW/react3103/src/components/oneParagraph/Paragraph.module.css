@@ -1,0 +1,26 @@
+.paragraphStyle {
+    width: 100%;
+    border: 1px double black;
+    background-color: white;
+}
+
+.headtext {
+    padding: 0px 10px;
+}
+
+.pText {
+    font-size: 20px;
+    padding: 0px 10px;
+}
+
+.imgText {
+    width: 100%;
+    display: flex;
+
+    justify-content: center;
+}
+
+.imgText img {
+    width: 500px;
+    padding-bottom: 10px;
+}
