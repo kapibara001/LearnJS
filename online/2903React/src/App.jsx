@@ -5,10 +5,16 @@ import { Gallery } from "./components/Gallery";
 
 import triggerIcon from './assets/react.svg'
 import { ClickEffect } from "./components/ClickEffect/ClickEffect";
+import { Timer } from "./components/Timer/Timer"
+import { FetchApi } from "./components/Fetch/index"
+import { ExampleUseRequest } from './components/MyHook/useMyHook'
 
-export function App() {
+export function App() { 
   return (
     <>
+      <ExampleUseRequest/>
+      {/* <FetchApi/> */}
+      <Timer volume={3000}/>
       <ClickEffect/>
       <Clicker/>
       <DropDown 
