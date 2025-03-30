@@ -1,0 +1,13 @@
+.list {
+    background-color: white;
+
+    margin-top: 20px 0;
+}
+
+ul {
+    list-style: upper-roman;
+}
+
+ul li {
+    margin: 5px 0;
+}
