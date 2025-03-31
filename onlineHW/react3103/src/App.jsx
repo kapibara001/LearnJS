@@ -5,6 +5,7 @@ import { Navigation } from './components/Navigation/Navigation';
 import { Card } from './components/CardPay/Card';
 import { Table } from './components/Table/Table';
 import { List } from './components/List/List';
+import { Window } from './components/ModalWindow/ModalWindow';
 
 export default function App() {
   return (
@@ -31,7 +32,7 @@ export default function App() {
       </div>
       <Table/>
       <List/>
-      
+      <Window/>
     </>
   )
 }
