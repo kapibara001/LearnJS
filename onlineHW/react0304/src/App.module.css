@@ -1,0 +1,17 @@
+.Cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+    width: 1000px;
+
+    margin-top: 30px;
+}
+
+.forCardMedia {}
+
+@media (width < 1000px) {
+    .Cards {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-row-gap: 20px;
+    }
+}
