@@ -19,8 +19,13 @@ export function App() {
           <Card urlImage={'https://i.pinimg.com/originals/d5/ba/29/d5ba29eb30fabb8818723df580ecd14d.png'} name="Propper"/>
         </div>
       </div>
-
       <Footer/>
+
+
+      <div className='secondExcersize'>
+        <h1>Hello!</h1>
+      </div>
+
     </>
   )
 }
