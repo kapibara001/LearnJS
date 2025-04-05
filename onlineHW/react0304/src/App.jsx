@@ -1,12 +1,13 @@
 import styles from './App.module.css'
 import { Card } from "./assets/components/shop/Card/Card"
 import { Footer } from './assets/components/shop/Footer/Footer'
-
+import { Menu } from './assets/components/menu/Menu'
+import { Page } from './assets/components/htmlPage/Page'
 
 export function App() {
   return (
     <>
-      <div style={{
+      <div className='firstExersize' style={{
         width: '100%',
         display: 'flex',
         justifyContent:'center',
@@ -20,12 +21,18 @@ export function App() {
         </div>
       </div>
       <Footer/>
+      <hr />
 
 
-      <div className='secondExcersize'>
-        <h1>Hello!</h1>
+      <div className='secondExersize'>
+        <Menu/>
       </div>
+      <hr />
 
+      <div className='thirdExersize'>
+        <Page/>
+      </div>
+      
     </>
   )
 }
