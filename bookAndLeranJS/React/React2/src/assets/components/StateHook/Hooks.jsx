@@ -97,6 +97,16 @@ export function ChangeColor() {
 export function ChangeColorByClickToColor() {
     const [color, setColor] = useState('white');
 
+    function ColorBox({colorText}) {
+        return (
+            <div className={styles['box']} style={{ backgroundColor: colorText}} 
+            onClick={() => setColor(colorText)}
+            >
+                <b>{colorText}</b>
+            </div>
+        )
+    }
+
     return (
         <div className={styles['main']}>
             <div style={{ display: 'flex' }}>
@@ -107,14 +117,6 @@ export function ChangeColorByClickToColor() {
             <div className={styles['ChangedBox']} style={{ backgroundColor: color}}>
                 Some text
             </div>
-        </div>
-    )
-}
-
-function ColorBox({colorText}) {
-    return (
-        <div className={styles['box']} style={{ backgroundColor: colorText}}>
-            <b>{colorText}</b>
         </div>
     )
 }

@@ -8,15 +8,20 @@ export function App() {
   return (
     <>
       <Destruct/>
+
       <Author 
         name={'Ivan'} 
         lastname={'Krilov'} 
         discription={'The best of the best in writes'}
         year={1956}
       />
+
       <Defaults name={'William'} lastName={"Shakspeare"}/>
+
       <States step={5} start={6}/>
+
       <ChangeColor/>
+      
       <ChangeColorByClickToColor/>
     </> 
   )
