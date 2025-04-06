@@ -3,6 +3,7 @@ import { Card } from "./assets/components/shop/Card/Card"
 import { Footer } from './assets/components/shop/Footer/Footer'
 import { Menu } from './assets/components/menu/Menu'
 import { Page } from './assets/components/htmlPage/Page'
+import { Line } from './assets/components/Lines/Line'
 
 export function App() {
   return (
@@ -33,6 +34,21 @@ export function App() {
         <Page/>
       </div>
       
+      <div className='Lines'>
+        <Line width={'1.55%'}/>
+        <Line width={'3.125%'}/>
+        <Line width={'6.25%'}/>
+        <Line width={'12.5%'}/>
+        <Line width={'25%'}/>
+        <Line width={'50%'}/>
+        <Line width={'100%'}/>
+        <Line width={'50%'}/>
+        <Line width={'25%'}/>
+        <Line width={'12.5%'}/>
+        <Line width={'6.25%'}/>
+        <Line width={'3.125%'}/>
+        <Line width={'1.55%'}/>
+      </div>
     </>
   )
 }
