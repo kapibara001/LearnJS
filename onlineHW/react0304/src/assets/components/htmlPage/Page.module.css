@@ -16,6 +16,7 @@
     color: white;
     font-size: 20px;
 }
+
 .longmodule p {
     margin-left: 30px;
 }
@@ -30,4 +31,27 @@
 .shortmodule {
     justify-content: center;
     background-color: blueviolet;
+}
+
+.centerModule {
+    width: 60%;
+    background-color: blueviolet;
+    height: 300px;
+    margin: 0 10px;
+    padding: 10px 30px;
+}
+
+.centerModule b {
+    font-size: 30px;
+    color: white;
+}
+
+.section {
+    width: 88%;
+    height: 90px;
+
+    padding: 10px 30px;
+    margin-bottom: 10px;
+
+    background-color: rgb(175, 111, 235);
 }
