@@ -1,84 +1,83 @@
-import st from './Game.module.css'
+import styles from './Game.module.css'
 import { useState, useEffect } from 'react'
 
 export function Game() {
-    const [startmenu, setStartMenu] = useState(true)
-    const [gameField, setStartField] = useState(false)
-    const [timer, setTimer] = useState(true)
+    const [startMenu, setStartMenu] = useState(true)
+    const [timeLeft, setTimeLeft] = useState(10)
+    const [isGame, setIsGame] = useState(false)
+    const [gameOver, setGameOver] = useState(false)
+    const [fruitCount, setFruitCount] = useState(0)
+    const [applePos, setApplePos] = useState({ x: 0, y: 0 })
 
-
-    function StartGame() {
+    function startGame() {
         setStartMenu(false)
-        setStartField(true)
+        setIsGame(true)
+        spawnApple()
     }
 
-    function GameEnd() {
-        setStartMenu(true)
-        setStartField(false)
+    function spawnApple() {
+        const x = Math.floor(Math.random() * 626)
+        const y = Math.floor(Math.random() * 710)
+        setApplePos({ x, y })
     }
 
-    function StartMenu() {
-        if (startmenu) {
-            return(
-                <div style={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}>
-                    <div className={st['SMenu']}>
-                        <p style={{ textAlign: 'center'}}>
-                            Привет! Нажми кнопку начать играть, чтобы приступить к игре!
-                        </p>
-                        <button onClick={() => StartGame()}>Начать игру</button>
-                    </div>     
-                </div>
-            )
+    useEffect(() => {
+        if (!isGame) return
+
+        if (timeLeft <= 0) {
+            setGameOver(true)
+            setIsGame(false)
+            return
         }
-    }
 
-    function Timer() {
-        const [seconds, setSeconds] = useState(3); // начальное время — 3
-        const [isActive, setIsActive] = useState(true); // включён ли таймер
-      
-        useEffect(() => {
-          let interval;
-      
-          if (isActive && seconds > 0) {
-            interval = setInterval(() => {
-              setSeconds(prev => prev - 1);
-            }, 1000);
-          }
-      
-          if (seconds === 0) {
-            clearInterval(interval);
-            setIsActive(false);
-            setTimer(false);
-          }
-      
-          return () => clearInterval(interval);
-        }, [isActive, seconds]);
-      
-        return (
-          <div className={st['preStart']}>
-            <h1>{seconds}</h1>
-          </div>
-        );
-      }
+        const timer = setInterval(() => {
+            setTimeLeft(prev => prev - 1)
+        }, 1000)
 
-    function Game() {
-        
+        return () => clearInterval(timer)
+    }, [isGame, timeLeft])
+
+    function handleAppleClick() {
+        setFruitCount(prev => prev + 1)
+        spawnApple()
     }
 
     return (
-        <div className={st['windowGame']}>
-            <StartMenu/>
-            {gameField && (
-                timer && (
-                    <Timer/>
-                )
+        <div className={styles.windowGame}>
+            {startMenu && (
+                <div className={styles['SMenu']}>
+                    <p>Привет! Чтобы начать игру, нажми на кнопку!</p>
+                    <button onClick={startGame}>Начать игру</button>
+                </div>
+            )}
 
+            {isGame && (
+                <>
+                    <div className={styles['timeGame']}>
+                        <p>Время: {timeLeft}</p>
+                        <p>Количество яблок: {fruitCount}</p>
+                    </div>
+
+                    <div className={styles['gamefield']}>
+                        <div
+                            className={styles['apple']}
+                            style={{
+                                marginTop: `${applePos.y}px`,
+                                marginLeft: `${applePos.x}px`,
+                                position: 'absolute',
+                                cursor: 'pointer'
+                            }}
+                            onClick={handleAppleClick}
+                        ></div>
+                    </div>
+                </>
+            )}
+
+            {gameOver && (
+                <div className={styles['GameOver']}>
+                    <p>Игра окончена! Ты собрал {fruitCount} яблок.</p>
+                    <button onClick={() => window.location.reload()}>Сыграть ещё раз</button>
+                </div>
             )}
         </div>
     )
