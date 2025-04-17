@@ -53,8 +53,6 @@ export function UseRef() {
     
     return (
         <div>
-            <h1>Hello world!</h1>
-
             <h2>Количество рендеров: {renderCount.current}</h2>
             <input type="text" value={value} onChange={e => setValue(e.target.value)} ref={inputRef}/>
 

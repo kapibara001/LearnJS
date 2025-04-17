@@ -1,7 +1,7 @@
 /**
  * Один из самых необычных, при этом очень важных и полезных хуков - хук useCallback()
  * 
- * 
+ * Данный колбэк вернет замемоизированный колбэк - грубо говоря - useMemo, но для функций, а не для переменных
  */
 
 import { useCallback, useEffect, useState } from "react";
@@ -18,6 +18,7 @@ export function UsCallback() {
     const generateItemsFromAPI = () => useCallback(() =>{
         return new Array(count).fill('').map((_, i)=> `Элемент: ${i+1}`)
     }, [count])
+
 
     return (
         <>
