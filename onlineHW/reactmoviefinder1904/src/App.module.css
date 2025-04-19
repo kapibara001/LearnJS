@@ -12,7 +12,16 @@
 
 .findModule input {
   width: 600px;
-  border-radius: 10px;
+
+  border: 0;
+  border-bottom: 2px solid rgb(160, 160, 160);
+  outline: none;  
+}
+
+.findModule input:focus {
+  border-bottom: 3px solid black;
+  outline: none;
+  border-radius: 0;
 }
 
 .imgCase {
@@ -51,5 +60,7 @@
   width: 900px;
   height: max-content;
 
-  background-color: aqua;
+  border: 1px solid black;
+  border-radius: 5px;
+
 }
