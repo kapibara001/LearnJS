@@ -4,6 +4,8 @@
 
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
 
   font-size: 22px;
 
@@ -27,7 +29,7 @@
 .imgCase {
   width: 60px;
   height: 100%;
-  padding: 0 10px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,5 +64,23 @@
 
   border: 1px solid black;
   border-radius: 5px;
+}
 
+.movieCard {
+  display: grid;
+  grid-template-columns: 3fr 8fr;
+}
+
+.movieCard img {
+  width: 100%;
+  height: 330px;
+  padding: 10px;
+}
+
+.info {
+  padding-right: 10px;
+}
+
+.info button {
+  margin-bottom: 10px;
 }
