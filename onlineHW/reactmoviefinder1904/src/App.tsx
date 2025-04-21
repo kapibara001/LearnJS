@@ -15,7 +15,7 @@ export default function App() {
   interface filmElements {
     Title: string,
     Year: string,
-    Rating: string,
+    Rated: string,
     Genre: string,
     Director: string,
     Actors: string,
@@ -66,7 +66,7 @@ export default function App() {
 
     if (resp !== '') {
       setAfterSearch(true);
-      console.log(type);
+      // console.log(type);
 
       if (type === "null") {
         fetch(`http://www.omdbapi.com/?t=${resp}&apikey=97a5fe93`)
@@ -99,8 +99,6 @@ export default function App() {
   function FilmList({filmdata}: ResponseElements) {
     const [short, setShort] = useState(true);
 
-    const filmTitle = filmdata.Title;
-
     return (
       <div className={styles.movieCard}>
       {short && (
@@ -118,6 +116,7 @@ export default function App() {
           </div>
         </>       
       )}
+
       {!short && (
         <>
         <div className='img'>
@@ -127,7 +126,7 @@ export default function App() {
           <h2>Название: {filmData?.Title}</h2>
           <h2>Год выпуска: {filmData?.Year}</h2>
           <h2>Тип видеопотока: {filmData?.Genre}</h2>
-          <h2>Рейтинг: {filmData?.Rating}</h2>
+          <h2>Рейтинг: {filmData?.Rated}</h2>
           <h2>Режисер: {filmData?.Director}</h2>
           <h2>Актеры: {filmData?.Actors}</h2>
           <h2>Описание: {filmData?.Plot}</h2>
