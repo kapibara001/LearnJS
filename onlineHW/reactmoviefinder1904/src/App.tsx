@@ -65,8 +65,8 @@ export default function App() {
     const type = filmType.current.value; // Тип фильма(movie, serial, episode)
 
     if (resp !== '') {
+      let checkForId = parseInt(resp);
       setAfterSearch(true);
-      // console.log(type);
 
       if (type === "null") {
         fetch(`http://www.omdbapi.com/?t=${resp}&apikey=97a5fe93`)
@@ -131,9 +131,9 @@ export default function App() {
           <h2>Актеры: {filmData?.Actors}</h2>
           <h2>Описание: {filmData?.Plot}</h2>
           <div className="d-grid gap-2">
-          <button className="btn btn-warning" type="button" onClick={() => {setShort(prev => !prev)}}>Скрыть</button>
+            <button className="btn btn-warning" type="button" onClick={() => {setShort(prev => !prev)}}>Скрыть</button>
+          </div>
         </div>
-      </div>
         </>
       )}
       </div>
