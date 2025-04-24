@@ -9,11 +9,11 @@ export default function App() {
   const filmType = useRef<string>("");
   const isByOneWord = useRef<HTMLInputElement>(null);
   
-  const [afterSearch, setAfterSearch] = useState(false);
-  const [filmData, setFilmData] = useState<filmElements[] | null>([])
+  const [afterSearch, setAfterSearch] = useState(false); // Состояние, разрешающее/запрещающее выводить результаты на экран
+  const [filmData, setFilmData] = useState<filmElements[] | null>([]) // Массив данных фильма
 
 
-  interface filmElements {
+  type filmElements = {
     Title: string,
     Year: string,
     Rated: string,
@@ -109,8 +109,8 @@ function userResponse() {
   function FilmList({ filmdata }: { filmdata: filmElements[] }) {
     return (
       <>
-        {filmdata.map((film, idx) => (
-          <FilmCard key={idx} film={film} />
+        {filmdata.map((film) => (
+          <FilmCard film={film} />
         ))}
       </>
     );
