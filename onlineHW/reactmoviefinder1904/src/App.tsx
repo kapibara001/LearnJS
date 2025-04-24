@@ -89,7 +89,7 @@ function userResponse() {
                 return fetch(`https://www.omdbapi.com/?apikey=97a5fe93&i=${film.imdbID}&`)
                   .then(response => response.json());
               })).then(fullFilmInfoArray => {
-                console.log(fullFilmInfoArray);
+                setFilmData(fullFilmInfoArray);
               })
           } else {
             // точное совпадение - один объект
